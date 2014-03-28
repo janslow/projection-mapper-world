@@ -1,14 +1,14 @@
-package com.jayanslow.projection.scene.json;
+package com.jayanslow.projection.world.json;
 
 import javax.vecmath.Vector3f;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.scene.CuboidScreen;
-import com.jayanslow.projection.scene.FlatScreen;
-import com.jayanslow.projection.scene.Screen;
-import com.jayanslow.projection.scene.ScreenType;
+import com.jayanslow.projection.world.CuboidScreen;
+import com.jayanslow.projection.world.FlatScreen;
+import com.jayanslow.projection.world.Screen;
+import com.jayanslow.projection.world.ScreenType;
 
 public class ScreenSerializer extends AbstractRealObjectSerializer<Screen> {
 

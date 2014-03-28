@@ -1,11 +1,11 @@
-package com.jayanslow.projection.scene.json;
+package com.jayanslow.projection.world.json;
 
 import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
 
-import com.jayanslow.projection.scene.CuboidScreen;
+import com.jayanslow.projection.world.CuboidScreen;
 
 public class CuboidScreenSerializer extends AbstractScreenSerializer<CuboidScreen> {
 

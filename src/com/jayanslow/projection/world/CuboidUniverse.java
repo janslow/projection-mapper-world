@@ -1,4 +1,4 @@
-package com.jayanslow.projection.scene;
+package com.jayanslow.projection.world;
 
 import java.util.Collection;
 

@@ -1,4 +1,4 @@
-package com.jayanslow.projection.scene;
+package com.jayanslow.projection.world;
 
 import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;

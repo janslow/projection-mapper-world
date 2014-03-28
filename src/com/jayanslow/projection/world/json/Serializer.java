@@ -1,4 +1,4 @@
-package com.jayanslow.projection.scene.json;
+package com.jayanslow.projection.world.json;
 
 import org.json.JSONException;
 import org.json.JSONObject;

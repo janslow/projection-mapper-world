@@ -1,13 +1,13 @@
-package com.jayanslow.projection.scene.json;
+package com.jayanslow.projection.world.json;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.scene.Projector;
-import com.jayanslow.projection.scene.RealObject;
-import com.jayanslow.projection.scene.RealObjectType;
-import com.jayanslow.projection.scene.Screen;
-import com.jayanslow.projection.scene.Universe;
+import com.jayanslow.projection.world.Projector;
+import com.jayanslow.projection.world.RealObject;
+import com.jayanslow.projection.world.RealObjectType;
+import com.jayanslow.projection.world.Screen;
+import com.jayanslow.projection.world.Universe;
 
 public class RealObjectSerializer extends AbstractSerializer<RealObject> {
 

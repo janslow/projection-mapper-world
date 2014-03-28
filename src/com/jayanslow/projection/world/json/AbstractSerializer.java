@@ -1,4 +1,4 @@
-package com.jayanslow.projection.scene.json;
+package com.jayanslow.projection.world.json;
 
 public abstract class AbstractSerializer<T> implements Serializer<T> {
 

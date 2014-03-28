@@ -1,11 +1,11 @@
-package com.jayanslow.projection.scene.json;
+package com.jayanslow.projection.world.json;
 
 import javax.vecmath.Vector3f;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.scene.RealObject;
+import com.jayanslow.projection.world.RealObject;
 
 public abstract class AbstractRealObjectSerializer<T extends RealObject> extends AbstractSerializer<T> {
 	public static final String	KEY_ID			= "id";

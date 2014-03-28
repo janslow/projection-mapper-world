@@ -1,4 +1,4 @@
-package com.jayanslow.projection.scene.json;
+package com.jayanslow.projection.world.json;
 
 import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
@@ -6,8 +6,8 @@ import javax.vecmath.Vector3f;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.scene.Projector;
-import com.jayanslow.projection.scene.StandardProjector;
+import com.jayanslow.projection.world.Projector;
+import com.jayanslow.projection.world.StandardProjector;
 
 public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector> {
 

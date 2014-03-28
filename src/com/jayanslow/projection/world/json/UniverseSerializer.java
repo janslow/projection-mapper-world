@@ -1,4 +1,4 @@
-package com.jayanslow.projection.scene.json;
+package com.jayanslow.projection.world.json;
 
 import java.util.Collection;
 
@@ -8,10 +8,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.scene.CuboidUniverse;
-import com.jayanslow.projection.scene.DisplayType;
-import com.jayanslow.projection.scene.RealObject;
-import com.jayanslow.projection.scene.Universe;
+import com.jayanslow.projection.world.CuboidUniverse;
+import com.jayanslow.projection.world.DisplayType;
+import com.jayanslow.projection.world.RealObject;
+import com.jayanslow.projection.world.Universe;
 
 public class UniverseSerializer extends AbstractRealObjectSerializer<Universe> {
 	public static final String	KEY_CHILDREN		= "children";
