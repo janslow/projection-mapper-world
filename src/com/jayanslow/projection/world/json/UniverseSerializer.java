@@ -27,7 +27,7 @@ public class UniverseSerializer extends AbstractRealObjectSerializer<Universe> {
 		final JSONArray jsonChildren = o.getJSONArray(KEY_CHILDREN);
 		final Collection<RealObject> children = getFactory().deserialize(RealObject.class, jsonChildren);
 
-		final String jsonDisplayType = o.getString(KEY_DISPLAY_TYPE);
+		final String jsonDisplayType = o.getString(KEY_DISPLAY_TYPE).toUpperCase();
 		final DisplayType displayType = Enum.valueOf(DisplayType.class, jsonDisplayType);
 
 		final Vector3f dimensions = getFactory().deserialize(Vector3f.class, o.getJSONObject(KEY_DIMENSIONS));
@@ -43,7 +43,7 @@ public class UniverseSerializer extends AbstractRealObjectSerializer<Universe> {
 		final JSONObject jsonDimensions = getFactory().serialize(Vector3f.class, t.getDimensions());
 		o.put(KEY_DIMENSIONS, jsonDimensions);
 
-		final String jsonDisplayType = t.getDisplayType().toString();
+		final String jsonDisplayType = t.getDisplayType().toString().toLowerCase();
 		o.put(KEY_DISPLAY_TYPE, jsonDisplayType);
 	}
 

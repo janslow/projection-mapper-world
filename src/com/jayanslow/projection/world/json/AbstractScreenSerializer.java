@@ -30,7 +30,7 @@ public abstract class AbstractScreenSerializer<T extends Screen> extends Abstrac
 	@Override
 	protected void serializeObject(final T t, final JSONObject o) throws JSONException {
 		o.put(KEY_SCREEN_ID, t.getScreenId());
-		o.put(KEY_SCREEN_TYPE, t.getScreenType());
+		o.put(KEY_SCREEN_TYPE, t.getScreenType().toString().toLowerCase());
 		o.put(KEY_DIRECTION, getFactory().serialize(AxisAngle4f.class, t.getDirection()));
 
 		serializeScreen(t, o);

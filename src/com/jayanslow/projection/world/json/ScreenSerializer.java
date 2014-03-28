@@ -1,7 +1,5 @@
 package com.jayanslow.projection.world.json;
 
-import javax.vecmath.Vector3f;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -10,15 +8,16 @@ import com.jayanslow.projection.world.FlatScreen;
 import com.jayanslow.projection.world.Screen;
 import com.jayanslow.projection.world.ScreenType;
 
-public class ScreenSerializer extends AbstractRealObjectSerializer<Screen> {
+public class ScreenSerializer extends AbstractSerializer<Screen> {
 
 	public ScreenSerializer(final SerializerFactory factory) {
 		super(factory, Screen.class);
 	}
 
 	@Override
-	protected Screen deserializeObject(final JSONObject o, final int id, final Vector3f position) {
-		final ScreenType type = Enum.valueOf(ScreenType.class, o.getString(AbstractScreenSerializer.KEY_SCREEN_TYPE));
+	public Screen deserialize(JSONObject o) throws JSONException {
+		final ScreenType type = Enum.valueOf(ScreenType.class, o.getString(AbstractScreenSerializer.KEY_SCREEN_TYPE)
+				.toUpperCase());
 
 		switch (type) {
 		case CUBOID:
@@ -31,12 +30,14 @@ public class ScreenSerializer extends AbstractRealObjectSerializer<Screen> {
 	}
 
 	@Override
-	protected void serializeObject(final Screen t, final JSONObject o) throws JSONException {
+	public void serialize(Screen t, JSONObject o) throws JSONException {
 		switch (t.getScreenType()) {
 		case CUBOID:
 			getFactory().serialize(CuboidScreen.class, (CuboidScreen) t, o);
+			break;
 		case FLAT:
 			getFactory().serialize(FlatScreen.class, (FlatScreen) t, o);
+			break;
 		default:
 			throw new RuntimeException("Unhandled ScreenType in ScreenSerializer.serialize");
 		}

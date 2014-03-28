@@ -30,7 +30,7 @@ public abstract class AbstractRealObjectSerializer<T extends RealObject> extends
 	public void serialize(final T t, final JSONObject o) throws JSONException {
 		o.put(KEY_ID, t.getId());
 		o.put(KEY_POSITION, getFactory().serialize(Vector3f.class, t.getPosition()));
-		o.put(KEY_TYPE, t.getType());
+		o.put(KEY_TYPE, t.getType().toString().toLowerCase());
 
 		serializeObject(t, o);
 	}
