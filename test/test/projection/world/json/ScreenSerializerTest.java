@@ -8,13 +8,13 @@ import static org.mockito.Mockito.when;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import com.jayanslow.projection.world.CuboidScreen;
-import com.jayanslow.projection.world.FlatScreen;
-import com.jayanslow.projection.world.Screen;
-import com.jayanslow.projection.world.ScreenType;
 import com.jayanslow.projection.world.json.ScreenSerializer;
 import com.jayanslow.projection.world.json.Serializer;
 import com.jayanslow.projection.world.json.SerializerFactory;
+import com.jayanslow.projection.world.models.CuboidScreen;
+import com.jayanslow.projection.world.models.FlatScreen;
+import com.jayanslow.projection.world.models.Screen;
+import com.jayanslow.projection.world.models.ScreenType;
 
 public class ScreenSerializerTest {
 

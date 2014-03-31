@@ -3,11 +3,11 @@ package com.jayanslow.projection.world.json;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.Projector;
-import com.jayanslow.projection.world.RealObject;
-import com.jayanslow.projection.world.RealObjectType;
-import com.jayanslow.projection.world.Screen;
-import com.jayanslow.projection.world.Universe;
+import com.jayanslow.projection.world.models.Projector;
+import com.jayanslow.projection.world.models.RealObject;
+import com.jayanslow.projection.world.models.RealObjectType;
+import com.jayanslow.projection.world.models.Screen;
+import com.jayanslow.projection.world.models.Universe;
 
 public class RealObjectSerializer extends AbstractSerializer<RealObject> {
 

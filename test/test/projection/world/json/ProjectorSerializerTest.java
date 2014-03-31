@@ -12,10 +12,10 @@ import javax.vecmath.Vector3f;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import com.jayanslow.projection.world.Projector;
-import com.jayanslow.projection.world.StandardProjector;
 import com.jayanslow.projection.world.json.ProjectorSerializer;
 import com.jayanslow.projection.world.json.SerializerFactory;
+import com.jayanslow.projection.world.models.Projector;
+import com.jayanslow.projection.world.models.StandardProjector;
 
 public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 

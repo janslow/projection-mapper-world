@@ -5,7 +5,7 @@ import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.CuboidScreen;
+import com.jayanslow.projection.world.models.CuboidScreen;
 
 public class CuboidScreenSerializer extends AbstractScreenSerializer<CuboidScreen> {
 

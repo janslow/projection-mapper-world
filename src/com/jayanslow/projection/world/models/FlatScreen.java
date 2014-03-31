@@ -1,40 +1,26 @@
-package com.jayanslow.projection.world;
+package com.jayanslow.projection.world.models;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
+import java.util.Collections;
 
 import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
-public class CuboidScreen extends AbstractRealObject implements Screen {
+public class FlatScreen extends AbstractRealObject implements Screen {
 
 	private final Vector3f		dimensions;
 	private final AxisAngle4f	direction;
-	private final List<Face>	faces;
+	private final Face			face;
 	private final int			screenId;
 
-	public CuboidScreen(final int id, final int screenId, final Vector3f position, final AxisAngle4f direction,
+	public FlatScreen(final int id, final int screenId, final Vector3f position, final AxisAngle4f direction,
 			final Vector3f dimensions) {
 		super(RealObjectType.SCREEN, id, position);
-		this.dimensions = dimensions;
 		this.direction = direction;
+		this.dimensions = dimensions;
 		this.screenId = screenId;
 
-		final float x = dimensions.x, y = dimensions.y, z = dimensions.z;
-
-		faces = new ArrayList<Face>(6);
-		// Front and Back
-		faces.add(new RectangularFace(0, new Vector3f(0, 0, 0), new Vector3f(x, y, 0)));
-		faces.add(new RectangularFace(1, new Vector3f(0, 0, z), new Vector3f(x, y, z)));
-
-		// Top and Bottom
-		faces.add(new RectangularFace(2, new Vector3f(0, y, 0), new Vector3f(x, y, z)));
-		faces.add(new RectangularFace(3, new Vector3f(0, 0, 0), new Vector3f(x, 0, z)));
-
-		// Left and Right
-		faces.add(new RectangularFace(4, new Vector3f(0, 0, 0), new Vector3f(0, y, z)));
-		faces.add(new RectangularFace(5, new Vector3f(x, 0, 0), new Vector3f(x, y, z)));
+		face = new RectangularFace(0, new Vector3f(0, 0, 0), this.dimensions);
 	}
 
 	@Override
@@ -45,7 +31,7 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		final CuboidScreen other = (CuboidScreen) obj;
+		final FlatScreen other = (FlatScreen) obj;
 		if (dimensions == null) {
 			if (other.dimensions != null)
 				return false;
@@ -56,10 +42,10 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 				return false;
 		} else if (!direction.equals(other.direction))
 			return false;
-		if (faces == null) {
-			if (other.faces != null)
+		if (face == null) {
+			if (other.face != null)
 				return false;
-		} else if (!faces.equals(other.faces))
+		} else if (!face.equals(other.face))
 			return false;
 		if (screenId != other.screenId)
 			return false;
@@ -78,14 +64,14 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 
 	@Override
 	public Face getFace(final int id) {
-		if (id < 0 || id >= 6)
+		if (id != 0)
 			return null;
-		return faces.get(id);
+		return face;
 	}
 
 	@Override
 	public Collection<Face> getFaces() {
-		return faces;
+		return Collections.singleton(face);
 	}
 
 	@Override
@@ -95,7 +81,7 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 
 	@Override
 	public ScreenType getScreenType() {
-		return ScreenType.CUBOID;
+		return ScreenType.FLAT;
 	}
 
 	@Override
@@ -104,7 +90,7 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 		int result = super.hashCode();
 		result = prime * result + (dimensions == null ? 0 : dimensions.hashCode());
 		result = prime * result + (direction == null ? 0 : direction.hashCode());
-		result = prime * result + (faces == null ? 0 : faces.hashCode());
+		result = prime * result + (face == null ? 0 : face.hashCode());
 		result = prime * result + screenId;
 		return result;
 	}

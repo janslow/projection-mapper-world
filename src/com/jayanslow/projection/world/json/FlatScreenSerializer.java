@@ -5,7 +5,7 @@ import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.FlatScreen;
+import com.jayanslow.projection.world.models.FlatScreen;
 
 public class FlatScreenSerializer extends AbstractScreenSerializer<FlatScreen> {
 

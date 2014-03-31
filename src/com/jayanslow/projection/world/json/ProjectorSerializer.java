@@ -6,8 +6,8 @@ import javax.vecmath.Vector3f;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.Projector;
-import com.jayanslow.projection.world.StandardProjector;
+import com.jayanslow.projection.world.models.Projector;
+import com.jayanslow.projection.world.models.StandardProjector;
 
 public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector> {
 

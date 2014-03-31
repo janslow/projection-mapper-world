@@ -3,10 +3,10 @@ package com.jayanslow.projection.world.json;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.CuboidScreen;
-import com.jayanslow.projection.world.FlatScreen;
-import com.jayanslow.projection.world.Screen;
-import com.jayanslow.projection.world.ScreenType;
+import com.jayanslow.projection.world.models.CuboidScreen;
+import com.jayanslow.projection.world.models.FlatScreen;
+import com.jayanslow.projection.world.models.Screen;
+import com.jayanslow.projection.world.models.ScreenType;
 
 public class ScreenSerializer extends AbstractSerializer<Screen> {
 

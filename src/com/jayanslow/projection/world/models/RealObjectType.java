@@ -1,4 +1,4 @@
-package com.jayanslow.projection.world;
+package com.jayanslow.projection.world.models;
 
 public enum RealObjectType {
 	PROJECTOR, SCREEN, UNIVERSE

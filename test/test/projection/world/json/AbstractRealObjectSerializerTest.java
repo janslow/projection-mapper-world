@@ -9,8 +9,8 @@ import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.RealObject;
 import com.jayanslow.projection.world.json.SerializerFactory;
+import com.jayanslow.projection.world.models.RealObject;
 
 public class AbstractRealObjectSerializerTest {
 

@@ -5,7 +5,7 @@ import javax.vecmath.Vector3f;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.RealObject;
+import com.jayanslow.projection.world.models.RealObject;
 
 public abstract class AbstractRealObjectSerializer<T extends RealObject> extends AbstractSerializer<T> {
 	public static final String	KEY_ID			= "id";

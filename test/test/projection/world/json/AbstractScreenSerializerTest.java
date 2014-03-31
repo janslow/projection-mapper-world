@@ -10,8 +10,8 @@ import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.Screen;
 import com.jayanslow.projection.world.json.SerializerFactory;
+import com.jayanslow.projection.world.models.Screen;
 
 public class AbstractScreenSerializerTest extends AbstractRealObjectSerializerTest {
 

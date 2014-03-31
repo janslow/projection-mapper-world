@@ -8,14 +8,14 @@ import static org.mockito.Mockito.when;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import com.jayanslow.projection.world.Projector;
-import com.jayanslow.projection.world.RealObject;
-import com.jayanslow.projection.world.RealObjectType;
-import com.jayanslow.projection.world.Screen;
-import com.jayanslow.projection.world.Universe;
 import com.jayanslow.projection.world.json.RealObjectSerializer;
 import com.jayanslow.projection.world.json.Serializer;
 import com.jayanslow.projection.world.json.SerializerFactory;
+import com.jayanslow.projection.world.models.Projector;
+import com.jayanslow.projection.world.models.RealObject;
+import com.jayanslow.projection.world.models.RealObjectType;
+import com.jayanslow.projection.world.models.Screen;
+import com.jayanslow.projection.world.models.Universe;
 
 public class RealObjectSerializerTest {
 

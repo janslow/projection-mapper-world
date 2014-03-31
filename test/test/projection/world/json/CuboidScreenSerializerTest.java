@@ -9,9 +9,9 @@ import javax.vecmath.Vector3f;
 import org.json.JSONObject;
 import org.junit.Test;
 
-import com.jayanslow.projection.world.CuboidScreen;
 import com.jayanslow.projection.world.json.CuboidScreenSerializer;
 import com.jayanslow.projection.world.json.SerializerFactory;
+import com.jayanslow.projection.world.models.CuboidScreen;
 
 public class CuboidScreenSerializerTest extends AbstractScreenSerializerTest {
 

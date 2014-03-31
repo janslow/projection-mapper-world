@@ -6,7 +6,7 @@ import javax.vecmath.Vector3f;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.Screen;
+import com.jayanslow.projection.world.models.Screen;
 
 public abstract class AbstractScreenSerializer<T extends Screen> extends AbstractRealObjectSerializer<T> {
 	public static final String	KEY_DIRECTION	= "direction";

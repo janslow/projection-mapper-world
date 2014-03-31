@@ -8,10 +8,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.CuboidUniverse;
-import com.jayanslow.projection.world.DisplayType;
-import com.jayanslow.projection.world.RealObject;
-import com.jayanslow.projection.world.Universe;
+import com.jayanslow.projection.world.models.CuboidUniverse;
+import com.jayanslow.projection.world.models.DisplayType;
+import com.jayanslow.projection.world.models.RealObject;
+import com.jayanslow.projection.world.models.Universe;
 
 public class UniverseSerializer extends AbstractRealObjectSerializer<Universe> {
 	public static final String	KEY_CHILDREN		= "children";
