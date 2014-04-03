@@ -6,10 +6,10 @@ import javax.vecmath.Vector3f;
 
 public class RectangularFace implements Face {
 
-	private final Vector2f	dimensions;
-	private final int		faceId;
-	private final Vector3f	position;
-	private AxisAngle4f		direction;
+	private final Vector2f		dimensions;
+	private final int			faceId;
+	private final Vector3f		position;
+	private final AxisAngle4f	direction;
 
 	public RectangularFace(final int faceId, final Vector3f position, final AxisAngle4f direction,
 			final Vector2f dimensions) {
@@ -48,9 +48,8 @@ public class RectangularFace implements Face {
 		return true;
 	}
 
-	@Override
-	public Vector3f getDimensions() {
-		return new Vector3f(dimensions.x, dimensions.y, 0);
+	public Vector2f getDimensions() {
+		return dimensions;
 	}
 
 	public AxisAngle4f getDirection() {

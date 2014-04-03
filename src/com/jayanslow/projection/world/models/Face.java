@@ -4,11 +4,8 @@ import javax.vecmath.Vector3f;
 
 public interface Face {
 	/**
-	 * Gets the dimensions of the face (from the screen)
 	 * 
-	 * @return Vector representing dimensions
 	 */
-	public Vector3f getDimensions();
 
 	/**
 	 * Gets the id of the face, such that (parent, faceId) is unique
