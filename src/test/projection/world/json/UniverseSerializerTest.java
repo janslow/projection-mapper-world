@@ -1,6 +1,6 @@
 package test.projection.world.json;
 
-import static com.jayanslow.utils.json.JsonJunitUtils.assertJsonEquals;
+import static com.jayanslow.utils.junit.JsonJunitUtils.assertJsonEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
