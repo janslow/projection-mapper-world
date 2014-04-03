@@ -5,6 +5,12 @@ import javax.vecmath.Vector3f;
 public interface RealObject {
 
 	/**
+	 * Direction the object is pointing in
+	 * 
+	 * @return Object direction and roll
+	 */
+	public abstract AxisAngle4f getDirection();
+	/**
 	 * Unique ID of object
 	 * 
 	 * @return Object ID

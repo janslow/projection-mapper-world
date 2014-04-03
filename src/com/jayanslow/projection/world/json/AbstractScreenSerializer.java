@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import com.jayanslow.projection.world.models.Screen;
 
 public abstract class AbstractScreenSerializer<T extends Screen> extends AbstractRealObjectSerializer<T> {
-	public static final String	KEY_DIRECTION	= "direction";
 	public static final String	KEY_SCREEN_ID	= "screen_id";
 	public static final String	KEY_SCREEN_TYPE	= "screen_type";
 
@@ -18,9 +17,8 @@ public abstract class AbstractScreenSerializer<T extends Screen> extends Abstrac
 	}
 
 	@Override
-	protected T deserializeObject(final JSONObject o, final int id, final Vector3f position) {
+	protected T deserializeObject(final JSONObject o, final int id, final Vector3f position, final AxisAngle4f direction) {
 		final int screenId = o.getInt(KEY_SCREEN_ID);
-		final AxisAngle4f direction = getFactory().deserialize(AxisAngle4f.class, o.getJSONObject(KEY_DIRECTION));
 
 		return deserializeScreen(o, id, screenId, position, direction);
 	}
@@ -31,7 +29,6 @@ public abstract class AbstractScreenSerializer<T extends Screen> extends Abstrac
 	protected void serializeObject(final T t, final JSONObject o) throws JSONException {
 		o.put(KEY_SCREEN_ID, t.getScreenId());
 		o.put(KEY_SCREEN_TYPE, t.getScreenType().toString().toLowerCase());
-		o.put(KEY_DIRECTION, getFactory().serialize(AxisAngle4f.class, t.getDirection()));
 
 		serializeScreen(t, o);
 	}

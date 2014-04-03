@@ -1,18 +1,21 @@
 package com.jayanslow.projection.world.models;
 
+import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 public abstract class AbstractRealObject implements RealObject {
 
-	protected final int				id;
-	protected final Vector3f		position;
+	private final int				id;
+	private Vector3f				position;
 	private final RealObjectType	type;
+	private AxisAngle4f				direction;
 
-	public AbstractRealObject(final RealObjectType type, final int id, final Vector3f position) {
+	public AbstractRealObject(final RealObjectType type, final int id, final Vector3f position, AxisAngle4f direction) {
 		super();
 		this.type = type;
 		this.id = id;
 		this.position = position;
+		this.direction = direction;
 	}
 
 	@Override
@@ -30,6 +33,11 @@ public abstract class AbstractRealObject implements RealObject {
 			if (other.position != null)
 				return false;
 		} else if (!position.equals(other.position))
+			return false;
+		if (direction == null) {
+			if (other.direction != null)
+				return false;
+		} else if (!direction.equals(other.direction))
 			return false;
 		if (type != other.type)
 			return false;
@@ -57,8 +65,14 @@ public abstract class AbstractRealObject implements RealObject {
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + (position == null ? 0 : position.hashCode());
+		result = prime * result + (direction == null ? 0 : direction.hashCode());
 		result = prime * result + (type == null ? 0 : type.hashCode());
 		return result;
 	}
 
+
+	@Override
+	public AxisAngle4f getDirection() {
+		return direction;
+	}
 }

@@ -9,19 +9,17 @@ import javax.vecmath.Vector3f;
 
 public class FlatScreen extends AbstractRealObject implements Screen {
 
-	private final Vector2f		dimensions;
-	private final AxisAngle4f	direction;
-	private final Face			face;
-	private final int			screenId;
+	private Vector2f	dimensions;
+	private final Face	face;
+	private final int	screenId;
 
 	public FlatScreen(final int id, final int screenId, final Vector3f position, final AxisAngle4f direction,
 			final Vector2f dimensions) {
-		super(RealObjectType.SCREEN, id, position);
-		this.direction = direction;
+		super(RealObjectType.SCREEN, id, position, direction);
 		this.dimensions = dimensions;
 		this.screenId = screenId;
 
-		face = new RectangularFace(0, new Vector3f(0, 0, 0), this.direction, this.dimensions);
+		face = new RectangularFace(0, new Vector3f(0, 0, 0), getDirection(), this.dimensions);
 	}
 
 	@Override
@@ -38,11 +36,6 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 				return false;
 		} else if (!dimensions.equals(other.dimensions))
 			return false;
-		if (direction == null) {
-			if (other.direction != null)
-				return false;
-		} else if (!direction.equals(other.direction))
-			return false;
 		if (screenId != other.screenId)
 			return false;
 		return true;
@@ -51,11 +44,6 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 	@Override
 	public Vector3f getDimensions() {
 		return new Vector3f(dimensions.x, dimensions.y, 0);
-	}
-
-	@Override
-	public AxisAngle4f getDirection() {
-		return direction;
 	}
 
 	@Override
@@ -85,7 +73,6 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + (dimensions == null ? 0 : dimensions.hashCode());
-		result = prime * result + (direction == null ? 0 : direction.hashCode());
 		result = prime * result + (face == null ? 0 : face.hashCode());
 		result = prime * result + screenId;
 		return result;

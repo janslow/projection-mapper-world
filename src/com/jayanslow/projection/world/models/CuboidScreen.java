@@ -11,15 +11,13 @@ import javax.vecmath.Vector3f;
 public class CuboidScreen extends AbstractRealObject implements Screen {
 
 	private final Vector3f		dimensions;
-	private final AxisAngle4f	direction;
 	private final List<Face>	faces;
 	private final int			screenId;
 
 	public CuboidScreen(final int id, final int screenId, final Vector3f position, final AxisAngle4f direction,
 			final Vector3f dimensions) {
-		super(RealObjectType.SCREEN, id, position);
+		super(RealObjectType.SCREEN, id, position, direction);
 		this.dimensions = dimensions;
-		this.direction = direction;
 		this.screenId = screenId;
 
 		final float x = dimensions.x, y = dimensions.y, z = dimensions.z;
@@ -52,24 +50,18 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 				return false;
 		} else if (!dimensions.equals(other.dimensions))
 			return false;
-		if (direction == null) {
-			if (other.direction != null)
-				return false;
-		} else if (!direction.equals(other.direction))
-			return false;
 		if (screenId != other.screenId)
 			return false;
 		return true;
 	}
 
-	@Override
+	/**
+	 * Gets the dimensions of the object
+	 * 
+	 * @return Dimension vector (in mm)
+	 */
 	public Vector3f getDimensions() {
 		return dimensions;
-	}
-
-	@Override
-	public AxisAngle4f getDirection() {
-		return direction;
 	}
 
 	@Override
@@ -99,7 +91,6 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + (dimensions == null ? 0 : dimensions.hashCode());
-		result = prime * result + (direction == null ? 0 : direction.hashCode());
 		result = prime * result + (faces == null ? 0 : faces.hashCode());
 		result = prime * result + screenId;
 		return result;

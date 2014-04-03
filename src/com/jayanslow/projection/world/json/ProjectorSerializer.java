@@ -11,7 +11,6 @@ import com.jayanslow.projection.world.models.StandardProjector;
 
 public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector> {
 
-	public static final String	KEY_DIRECTION			= "direction";
 	public static final String	KEY_PROJECTOR_ID		= "projector_id";
 	public static final String	KEY_RESOLUTION_HEIGHT	= "resolution_height";
 	public static final String	KEY_RESOLUTION_WIDTH	= "resolution_width";
@@ -22,10 +21,10 @@ public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector>
 	}
 
 	@Override
-	protected Projector deserializeObject(final JSONObject o, final int id, final Vector3f position) {
+	protected Projector deserializeObject(final JSONObject o, final int id, final Vector3f position,
+			final AxisAngle4f direction) {
 		final int projectorId = o.getInt(KEY_PROJECTOR_ID);
 
-		final AxisAngle4f direction = getFactory().deserialize(AxisAngle4f.class, o.getJSONObject(KEY_DIRECTION));
 		final int height = o.getInt(KEY_RESOLUTION_HEIGHT);
 		final int width = o.getInt(KEY_RESOLUTION_WIDTH);
 
@@ -38,7 +37,6 @@ public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector>
 	protected void serializeObject(final Projector t, final JSONObject o) throws JSONException {
 		o.put(KEY_PROJECTOR_ID, t.getProjectorId());
 
-		o.put(KEY_DIRECTION, getFactory().serialize(AxisAngle4f.class, t.getDirection()));
 
 		o.put(KEY_RESOLUTION_HEIGHT, t.getResolutionHeight());
 		o.put(KEY_RESOLUTION_WIDTH, t.getResolutionWidth());

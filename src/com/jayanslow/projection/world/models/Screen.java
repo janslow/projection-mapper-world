@@ -2,7 +2,6 @@ package com.jayanslow.projection.world.models;
 
 import java.util.Collection;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 public interface Screen extends RealObject {
@@ -13,12 +12,6 @@ public interface Screen extends RealObject {
 	 */
 	public Vector3f getDimensions();
 
-	/**
-	 * Gets the direction the screen is pointed in
-	 * 
-	 * @return Direction and roll of screen
-	 */
-	public AxisAngle4f getDirection();
 
 	/**
 	 * Gets the face with the specified ID

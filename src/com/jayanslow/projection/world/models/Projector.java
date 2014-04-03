@@ -1,14 +1,10 @@
 package com.jayanslow.projection.world.models;
 
-import javax.vecmath.AxisAngle4f;
 
 public interface Projector extends RealObject {
 	/**
-	 * Direction the projector is pointing at
 	 * 
-	 * @return Projector direction and roll
 	 */
-	public AxisAngle4f getDirection();
 
 	/**
 	 * Gets the ID of the projector
