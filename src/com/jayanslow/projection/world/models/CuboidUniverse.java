@@ -4,15 +4,14 @@ import java.util.Collection;
 
 import javax.vecmath.Vector3f;
 
-public class CuboidUniverse extends AbstractRealObject implements Universe {
+public class CuboidUniverse implements Universe {
 
 	private final Collection<RealObject>	children;
 	private final Vector3f					dimensions;
 	private final RenderMode				displayType;
 
-	public CuboidUniverse(final int id, final Vector3f position, final Vector3f dimensions,
-			final Collection<RealObject> children, final DisplayType displayType) {
-		super(RealObjectType.UNIVERSE, id, position);
+	public CuboidUniverse(final Vector3f dimensions, final Collection<RealObject> children,
+			final RenderMode displayType) {
 		this.children = children;
 		this.dimensions = dimensions;
 		this.displayType = displayType;

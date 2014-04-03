@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import javax.vecmath.Vector3f;
 
-public interface Universe extends RealObject {
+public interface Universe {
 	/**
 	 * Gets the objects in the universe
 	 * 

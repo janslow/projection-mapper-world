@@ -7,7 +7,6 @@ import com.jayanslow.projection.world.models.Projector;
 import com.jayanslow.projection.world.models.RealObject;
 import com.jayanslow.projection.world.models.RealObjectType;
 import com.jayanslow.projection.world.models.Screen;
-import com.jayanslow.projection.world.models.Universe;
 
 public class RealObjectSerializer extends AbstractSerializer<RealObject> {
 
@@ -26,8 +25,6 @@ public class RealObjectSerializer extends AbstractSerializer<RealObject> {
 			return getFactory().deserialize(Projector.class, o);
 		case SCREEN:
 			return getFactory().deserialize(Screen.class, o);
-		case UNIVERSE:
-			return getFactory().deserialize(Universe.class, o);
 		default:
 			throw new RuntimeException("Unhandled RealObjectType in RealObjectSerializer.deserialize");
 		}
@@ -41,9 +38,6 @@ public class RealObjectSerializer extends AbstractSerializer<RealObject> {
 			break;
 		case SCREEN:
 			getFactory().serialize(Screen.class, (Screen) t, o);
-			break;
-		case UNIVERSE:
-			getFactory().serialize(Universe.class, (Universe) t, o);
 			break;
 		default:
 			throw new RuntimeException("Unhandled RealObjectType in RealObjectSerializer.serialize");
