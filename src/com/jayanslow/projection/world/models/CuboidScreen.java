@@ -28,12 +28,13 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 		faces.add(new RectangularFace(1, new Vector3f(0, 0, z), new AxisAngle4f(0, 0, +1, 0), new Vector2f(x, y)));
 
 		// Top and Bottom
-		faces.add(new RectangularFace(2, new Vector3f(0, y, 0), new AxisAngle4f(0, +1, 0, 0), new Vector2f(x, z)));
+		faces.add(new RectangularFace(2, new Vector3f(x, y, 0), new AxisAngle4f(0, +1, 0, (float) Math.PI),
+				new Vector2f(x, z)));
 		faces.add(new RectangularFace(3, new Vector3f(0, 0, 0), new AxisAngle4f(0, -1, 0, 0), new Vector2f(x, z)));
 
 		// Left and Right
 		faces.add(new RectangularFace(4, new Vector3f(0, 0, 0), new AxisAngle4f(-1, 0, 0, 0), new Vector2f(z, y)));
-		faces.add(new RectangularFace(5, new Vector3f(x, 0, 0), new AxisAngle4f(+1, 0, 0, 0), new Vector2f(z, y)));
+		faces.add(new RectangularFace(5, new Vector3f(x, 0, z), new AxisAngle4f(+1, 0, 0, 0), new Vector2f(z, y)));
 	}
 
 	@Override
