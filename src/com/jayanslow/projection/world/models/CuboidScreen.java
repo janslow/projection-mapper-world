@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector2f;
 import javax.vecmath.Vector3f;
 
@@ -14,9 +13,9 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 	private final List<Face>	faces;
 	private final int			screenId;
 
-	public CuboidScreen(final int id, final int screenId, final Vector3f position, final AxisAngle4f direction,
+	public CuboidScreen(final int id, final int screenId, final Vector3f position, final Rotation3f rotation,
 			final Vector3f dimensions) {
-		super(RealObjectType.SCREEN, id, position, direction);
+		super(RealObjectType.SCREEN, id, position, rotation);
 		this.dimensions = dimensions;
 		this.screenId = screenId;
 
@@ -24,17 +23,21 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 
 		faces = new ArrayList<Face>(6);
 		// Front and Back
-		faces.add(new RectangularFace(0, new Vector3f(0, 0, 0), new AxisAngle4f(0, 0, -1, 0), new Vector2f(x, y)));
-		faces.add(new RectangularFace(1, new Vector3f(0, 0, z), new AxisAngle4f(0, 0, +1, 0), new Vector2f(x, y)));
+		faces.add(new RectangularFace(0, new Vector3f(x, 0, 0), new Rotation3f(0, (float) Math.PI, 0), new Vector2f(x,
+				y)));
+		faces.add(new RectangularFace(1, new Vector3f(0, 0, z), new Rotation3f(), new Vector2f(x, y)));
 
 		// Top and Bottom
-		faces.add(new RectangularFace(2, new Vector3f(x, y, 0), new AxisAngle4f(0, +1, 0, (float) Math.PI),
+		faces.add(new RectangularFace(2, new Vector3f(0, y, z), new Rotation3f((float) Math.PI / 2, 0, 0),
 				new Vector2f(x, z)));
-		faces.add(new RectangularFace(3, new Vector3f(0, 0, 0), new AxisAngle4f(0, -1, 0, 0), new Vector2f(x, z)));
+		faces.add(new RectangularFace(3, new Vector3f(0, 0, 0), new Rotation3f((float) Math.PI / -2, 0, 0),
+				new Vector2f(x, z)));
 
 		// Left and Right
-		faces.add(new RectangularFace(4, new Vector3f(0, 0, 0), new AxisAngle4f(-1, 0, 0, 0), new Vector2f(z, y)));
-		faces.add(new RectangularFace(5, new Vector3f(x, 0, z), new AxisAngle4f(+1, 0, 0, 0), new Vector2f(z, y)));
+		faces.add(new RectangularFace(4, new Vector3f(0, 0, 0), new Rotation3f(0, (float) Math.PI / 2, 0),
+				new Vector2f(z, y)));
+		faces.add(new RectangularFace(5, new Vector3f(x, 0, z), new Rotation3f(0, (float) Math.PI / 2, 0),
+				new Vector2f(z, y)));
 	}
 
 	@Override

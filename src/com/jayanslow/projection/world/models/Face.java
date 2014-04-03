@@ -1,6 +1,5 @@
 package com.jayanslow.projection.world.models;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 public interface Face {
@@ -10,7 +9,7 @@ public interface Face {
 	 * 
 	 * @return Object direction and roll
 	 */
-	public AxisAngle4f getDirection();
+	public Rotation3f getDirection();
 
 	/**
 	 * Gets the id of the face, such that (parent, faceId) is unique

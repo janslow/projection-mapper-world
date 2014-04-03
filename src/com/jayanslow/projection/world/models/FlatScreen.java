@@ -3,7 +3,6 @@ package com.jayanslow.projection.world.models;
 import java.util.Collection;
 import java.util.Collections;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector2f;
 import javax.vecmath.Vector3f;
 
@@ -13,13 +12,13 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 	private final Face	face;
 	private final int	screenId;
 
-	public FlatScreen(final int id, final int screenId, final Vector3f position, final AxisAngle4f direction,
+	public FlatScreen(final int id, final int screenId, final Vector3f position, final Rotation3f rotation,
 			final Vector2f dimensions) {
-		super(RealObjectType.SCREEN, id, position, direction);
+		super(RealObjectType.SCREEN, id, position, rotation);
 		this.dimensions = dimensions;
 		this.screenId = screenId;
 
-		face = new RectangularFace(0, new Vector3f(0, 0, 0), getDirection(), this.dimensions);
+		face = new RectangularFace(0, new Vector3f(0, 0, 0), getRotation(), this.dimensions);
 	}
 
 	@Override
@@ -39,6 +38,15 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 		if (screenId != other.screenId)
 			return false;
 		return true;
+	}
+
+	/**
+	 * Gets the dimensions of the object
+	 * 
+	 * @return Dimension vector (in mm)
+	 */
+	public Vector2f getDimensions() {
+		return dimensions;
 	}
 
 	@Override
@@ -71,15 +79,6 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 		result = prime * result + (face == null ? 0 : face.hashCode());
 		result = prime * result + screenId;
 		return result;
-	}
-
-	/**
-	 * Gets the dimensions of the object
-	 * 
-	 * @return Dimension vector (in mm)
-	 */
-	public Vector2f getDimensions() {
-		return dimensions;
 	}
 
 	public void setDimensions(Vector2f dimensions) throws NullPointerException {

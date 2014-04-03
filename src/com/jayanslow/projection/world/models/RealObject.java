@@ -1,26 +1,15 @@
 package com.jayanslow.projection.world.models;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 public interface RealObject {
 
 	/**
-	 * Direction the object is pointing in
+	 * Rotation of the object
 	 * 
-	 * @return Object direction and roll
+	 * @return Object rotations
 	 */
-	public abstract AxisAngle4f getDirection();
-
-	/**
-	 * Sets the direction the object is facing
-	 * 
-	 * @param direction
-	 *            New direction (must not be null)
-	 * @throws NullPointerException
-	 *             Thrown if direction is null
-	 */
-	public abstract void setDirection(AxisAngle4f direction) throws NullPointerException;
+	public abstract Rotation3f getRotation();
 
 	/**
 	 * Unique ID of object
@@ -37,6 +26,23 @@ public interface RealObject {
 	public Vector3f getPosition();
 
 	/**
+	 * Gets the type of the object
+	 * 
+	 * @return Object Type
+	 */
+	public RealObjectType getType();
+
+	/**
+	 * Sets the rotation of the object
+	 * 
+	 * @param rotation
+	 *            New rotations (must not be null)
+	 * @throws NullPointerException
+	 *             Thrown if direction is null
+	 */
+	public abstract void setRotation(Rotation3f rotation) throws NullPointerException;
+
+	/**
 	 * Sets the position of the object (relative to the parent)
 	 * 
 	 * @param position
@@ -45,11 +51,4 @@ public interface RealObject {
 	 *             Thrown if position == null
 	 */
 	public void setPosition(Vector3f position) throws NullPointerException, UnsupportedOperationException;
-
-	/**
-	 * Gets the type of the object
-	 * 
-	 * @return Object Type
-	 */
-	public RealObjectType getType();
 }

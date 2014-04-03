@@ -1,6 +1,5 @@
 package com.jayanslow.projection.world.models;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 public abstract class AbstractRealObject implements RealObject {
@@ -8,14 +7,14 @@ public abstract class AbstractRealObject implements RealObject {
 	private final int				id;
 	private Vector3f				position;
 	private final RealObjectType	type;
-	private AxisAngle4f				direction;
+	private final Rotation3f		rotation;
 
-	public AbstractRealObject(final RealObjectType type, final int id, final Vector3f position, AxisAngle4f direction) {
+	public AbstractRealObject(final RealObjectType type, final int id, final Vector3f position, Rotation3f rotation) {
 		super();
 		this.type = type;
 		this.id = id;
 		this.position = position;
-		this.direction = direction;
+		this.rotation = new Rotation3f(rotation);
 	}
 
 	@Override
@@ -34,10 +33,10 @@ public abstract class AbstractRealObject implements RealObject {
 				return false;
 		} else if (!position.equals(other.position))
 			return false;
-		if (direction == null) {
-			if (other.direction != null)
+		if (rotation == null) {
+			if (other.rotation != null)
 				return false;
-		} else if (!direction.equals(other.direction))
+		} else if (!rotation.equals(other.rotation))
 			return false;
 		if (type != other.type)
 			return false;
@@ -55,6 +54,11 @@ public abstract class AbstractRealObject implements RealObject {
 	}
 
 	@Override
+	public Rotation3f getRotation() {
+		return new Rotation3f(rotation);
+	}
+
+	@Override
 	public RealObjectType getType() {
 		return type;
 	}
@@ -65,7 +69,7 @@ public abstract class AbstractRealObject implements RealObject {
 		int result = 1;
 		result = prime * result + id;
 		result = prime * result + (position == null ? 0 : position.hashCode());
-		result = prime * result + (direction == null ? 0 : direction.hashCode());
+		result = prime * result + (rotation == null ? 0 : rotation.hashCode());
 		result = prime * result + (type == null ? 0 : type.hashCode());
 		return result;
 	}
@@ -78,15 +82,10 @@ public abstract class AbstractRealObject implements RealObject {
 	}
 
 	@Override
-	public AxisAngle4f getDirection() {
-		return direction;
-	}
-
-	@Override
-	public void setDirection(AxisAngle4f direction) throws NullPointerException {
-		if (direction == null)
+	public void setRotation(Rotation3f rotation) throws NullPointerException {
+		if (rotation == null)
 			throw new NullPointerException("FlatScreen.direction can not be null");
-		this.direction = direction;
+		this.rotation.set(rotation);
 	}
 
 }

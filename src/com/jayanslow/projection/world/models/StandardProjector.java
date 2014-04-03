@@ -1,6 +1,5 @@
 package com.jayanslow.projection.world.models;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 public class StandardProjector extends AbstractRealObject implements Projector {
@@ -11,9 +10,9 @@ public class StandardProjector extends AbstractRealObject implements Projector {
 	private int				width;
 	private final Vector3f	dimensions;
 
-	public StandardProjector(final int id, final int projectorId, final Vector3f position, final AxisAngle4f direction,
+	public StandardProjector(final int id, final int projectorId, final Vector3f position, final Rotation3f rotation,
 			final Vector3f dimensions, final int height, final int width, final float throwRatio) {
-		super(RealObjectType.PROJECTOR, id, position, direction);
+		super(RealObjectType.PROJECTOR, id, position, rotation);
 		this.dimensions = dimensions;
 		this.height = height;
 		this.projectorId = projectorId;

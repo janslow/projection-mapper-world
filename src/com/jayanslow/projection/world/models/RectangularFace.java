@@ -1,6 +1,5 @@
 package com.jayanslow.projection.world.models;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector2f;
 import javax.vecmath.Vector3f;
 
@@ -9,12 +8,12 @@ public class RectangularFace implements Face {
 	private final Vector2f		dimensions;
 	private final int			faceId;
 	private final Vector3f		position;
-	private final AxisAngle4f	direction;
+	private final Rotation3f	rotation;
 
-	public RectangularFace(final int faceId, final Vector3f position, final AxisAngle4f direction,
+	public RectangularFace(final int faceId, final Vector3f position, final Rotation3f rotation,
 			final Vector2f dimensions) {
 		this.position = position;
-		this.direction = direction;
+		this.rotation = rotation;
 		this.dimensions = dimensions;
 		this.faceId = faceId;
 	}
@@ -35,10 +34,10 @@ public class RectangularFace implements Face {
 			return false;
 		if (faceId != other.faceId)
 			return false;
-		if (direction == null) {
-			if (other.direction != null)
+		if (rotation == null) {
+			if (other.rotation != null)
 				return false;
-		} else if (!direction.equals(other.position))
+		} else if (!rotation.equals(other.position))
 			return false;
 		if (position == null) {
 			if (other.position != null)
@@ -53,8 +52,8 @@ public class RectangularFace implements Face {
 	}
 
 	@Override
-	public AxisAngle4f getDirection() {
-		return direction;
+	public Rotation3f getDirection() {
+		return new Rotation3f(rotation);
 	}
 
 	@Override

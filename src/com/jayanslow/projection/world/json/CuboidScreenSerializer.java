@@ -1,11 +1,11 @@
 package com.jayanslow.projection.world.json;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
 
 import com.jayanslow.projection.world.models.CuboidScreen;
+import com.jayanslow.projection.world.models.Rotation3f;
 
 public class CuboidScreenSerializer extends AbstractScreenSerializer<CuboidScreen> {
 
@@ -17,10 +17,10 @@ public class CuboidScreenSerializer extends AbstractScreenSerializer<CuboidScree
 
 	@Override
 	protected CuboidScreen deserializeScreen(final JSONObject o, final int id, final int screenId,
-			final Vector3f position, final AxisAngle4f direction) {
+			final Vector3f position, final Rotation3f rotation) {
 		final Vector3f dimensions = getFactory().deserialize(Vector3f.class, o.getJSONObject(KEY_DIMENSIONS));
 
-		return new CuboidScreen(id, screenId, position, direction, dimensions);
+		return new CuboidScreen(id, screenId, position, rotation, dimensions);
 	}
 
 	@Override

@@ -1,11 +1,11 @@
 package com.jayanslow.projection.world.json;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.jayanslow.projection.world.models.Rotation3f;
 import com.jayanslow.projection.world.models.Screen;
 
 public abstract class AbstractScreenSerializer<T extends Screen> extends AbstractRealObjectSerializer<T> {
@@ -17,13 +17,13 @@ public abstract class AbstractScreenSerializer<T extends Screen> extends Abstrac
 	}
 
 	@Override
-	protected T deserializeObject(final JSONObject o, final int id, final Vector3f position, final AxisAngle4f direction) {
+	protected T deserializeObject(final JSONObject o, final int id, final Vector3f position, final Rotation3f rotation) {
 		final int screenId = o.getInt(KEY_SCREEN_ID);
 
-		return deserializeScreen(o, id, screenId, position, direction);
+		return deserializeScreen(o, id, screenId, position, rotation);
 	}
 
-	protected abstract T deserializeScreen(JSONObject o, int id, int screenId, Vector3f position, AxisAngle4f direction);
+	protected abstract T deserializeScreen(JSONObject o, int id, int screenId, Vector3f position, Rotation3f rotation);
 
 	@Override
 	protected void serializeObject(final T t, final JSONObject o) throws JSONException {

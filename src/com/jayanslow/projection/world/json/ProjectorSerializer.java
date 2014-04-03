@@ -1,12 +1,12 @@
 package com.jayanslow.projection.world.json;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jayanslow.projection.world.models.Projector;
+import com.jayanslow.projection.world.models.Rotation3f;
 import com.jayanslow.projection.world.models.StandardProjector;
 
 public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector> {
@@ -23,7 +23,7 @@ public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector>
 
 	@Override
 	protected Projector deserializeObject(final JSONObject o, final int id, final Vector3f position,
-			final AxisAngle4f direction) {
+			final Rotation3f rotation) {
 		final int projectorId = o.getInt(KEY_PROJECTOR_ID);
 
 		final Vector3f dimensions = getFactory().deserialize(Vector3f.class, o.getJSONObject(KEY_DIMENSIONS));
@@ -33,7 +33,7 @@ public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector>
 
 		final float ratio = (float) o.getDouble(KEY_THROW_RATIO);
 
-		return new StandardProjector(id, projectorId, position, direction, dimensions, height, width, ratio);
+		return new StandardProjector(id, projectorId, position, rotation, dimensions, height, width, ratio);
 	}
 
 	@Override
