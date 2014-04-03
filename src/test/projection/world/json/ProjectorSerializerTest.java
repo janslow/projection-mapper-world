@@ -25,6 +25,11 @@ public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 
 		prepareDeserializeRealObject(f, json);
 
+		Vector3f expectedDimensions = mock(Vector3f.class);
+		final JSONObject jsonDimensions = mock(JSONObject.class);
+		json.put("dimensions", jsonDimensions);
+		when(f.deserialize(Vector3f.class, jsonDimensions)).thenReturn(expectedDimensions);
+
 		final int expectedProjectorId = 10;
 		final int expectedHeight = 11;
 		final int expectedWidth = 12;
@@ -41,6 +46,7 @@ public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 		testDeserializeRealObject(actual);
 
 		assertEquals(expectedProjectorId, actual.getProjectorId());
+		assertEquals(expectedDimensions, actual.getDimensions());
 		assertEquals(expectedHeight, actual.getResolutionHeight());
 		assertEquals(expectedWidth, actual.getResolutionWidth());
 		assertEquals(expectedThrow, actual.getThrowRatio(), 0);
@@ -50,12 +56,17 @@ public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 	public void testSerialize() {
 		final JSONObject expected = new JSONObject();
 
-		final Projector t = new StandardProjector(0, 1, mock(Vector3f.class), mock(AxisAngle4f.class), 2, 3, 4.0f);
+		final Projector t = new StandardProjector(0, 1, mock(Vector3f.class), mock(AxisAngle4f.class),
+				mock(Vector3f.class), 2, 3, 4.0f);
 
 		final SerializerFactory f = mock(SerializerFactory.class);
 		final ProjectorSerializer s = new ProjectorSerializer(f);
 
 		prepareSerializeRealObject(t, expected, f);
+
+		final JSONObject expectedDimensisons = mock(JSONObject.class);
+		expected.put("dimensions", expectedDimensisons);
+		when(f.serialize(Vector3f.class, t.getDimensions())).thenReturn(expectedDimensisons);
 
 		expected.put("projector_id", t.getProjectorId());
 		expected.put("resolution_height", t.getResolutionHeight());

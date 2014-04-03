@@ -36,9 +36,9 @@ public class JsonControllerTest {
 
 		int projector = 0;
 		objects.add(new StandardProjector(id++, projector++, new Vector3f(0, 40, 0), new AxisAngle4f(0, -40, 50, 0),
-				768, 1024, 3));
+				new Vector3f(10, 20, 30), 768, 1024, 3));
 		objects.add(new StandardProjector(id++, projector++, new Vector3f(0, 50, 30), new AxisAngle4f(0, -50, 20, 0),
-				768, 1024, 1));
+				new Vector3f(10, 20, 30), 768, 1024, 1));
 
 		int screen = 0;
 		objects.add(new FlatScreen(id++, screen++, new Vector3f(0, 0, 50), new AxisAngle4f(0, 0, -50, 0), new Vector2f(
