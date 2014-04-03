@@ -70,9 +70,23 @@ public abstract class AbstractRealObject implements RealObject {
 		return result;
 	}
 
+	@Override
+	public void setPosition(Vector3f position) throws NullPointerException {
+		if (position == null)
+			throw new NullPointerException("position must not be null");
+		this.position = position;
+	}
 
 	@Override
 	public AxisAngle4f getDirection() {
 		return direction;
 	}
+
+	@Override
+	public void setDirection(AxisAngle4f direction) throws NullPointerException {
+		if (direction == null)
+			throw new NullPointerException("FlatScreen.direction can not be null");
+		this.direction = direction;
+	}
+
 }

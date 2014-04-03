@@ -82,4 +82,9 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 		return dimensions;
 	}
 
+	public void setDimensions(Vector2f dimensions) throws NullPointerException {
+		if (dimensions == null)
+			throw new NullPointerException("FlatScreen.dimensions can not be null");
+		this.dimensions = dimensions;
+	}
 }

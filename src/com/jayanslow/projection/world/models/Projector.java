@@ -37,4 +37,26 @@ public interface Projector extends RealObject {
 	 * @return Throw ratio of projector beam (1:x)
 	 */
 	public float getThrowRatio();
+
+	/**
+	 * Sets the resolution of the projector
+	 * 
+	 * @param height
+	 *            Number of rows of pixels (must be positive integer)
+	 * @param width
+	 *            Number of columns of pixels (must be positive integer)
+	 * @throws IllegalArgumentException
+	 *             Thrown if the height or width is <= 0
+	 */
+	public void setResolution(int height, int width) throws IllegalArgumentException;
+
+	/**
+	 * Sets the throw ratio of the projector lens
+	 * 
+	 * @param throwRatio
+	 *            Throw ratio of projector beam (1:x) (positive real number)
+	 * @throws IllegalArgumentException
+	 *             Thrown if the throwRatio is <= 0
+	 */
+	public void setThrowRatio(float throwRatio) throws IllegalArgumentException;
 }

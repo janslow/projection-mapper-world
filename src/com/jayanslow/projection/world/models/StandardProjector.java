@@ -76,4 +76,21 @@ public class StandardProjector extends AbstractRealObject implements Projector {
 		result = prime * result + width;
 		return result;
 	}
+
+	@Override
+	public void setResolution(int height, int width) throws IllegalArgumentException {
+		if (height <= 0)
+			throw new IllegalArgumentException("height must be > 0");
+		if (width <= 0)
+			throw new IllegalArgumentException("width must be > 0");
+		this.height = height;
+		this.width = width;
+	}
+
+	@Override
+	public void setThrowRatio(float throwRatio) throws IllegalArgumentException {
+		if (throwRatio <= 0)
+			throw new IllegalArgumentException("ratio must be > 0");
+		this.throwRatio = throwRatio;
+	}
 }
