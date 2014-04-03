@@ -64,9 +64,9 @@ public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 
 		prepareSerializeRealObject(t, expected, f);
 
-		final JSONObject expectedDimensisons = mock(JSONObject.class);
-		expected.put("dimensions", expectedDimensisons);
-		when(f.serialize(Vector3f.class, t.getDimensions())).thenReturn(expectedDimensisons);
+		final JSONObject expectedDimensions = mock(JSONObject.class);
+		expected.put("dimensions", expectedDimensions);
+		when(f.serialize(Vector3f.class, t.getDimensions())).thenReturn(expectedDimensions);
 
 		expected.put("projector_id", t.getProjectorId());
 		expected.put("resolution_height", t.getResolutionHeight());
