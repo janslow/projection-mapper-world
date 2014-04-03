@@ -1,11 +1,6 @@
 package test.projection.world.json;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-
-import javax.vecmath.AxisAngle4f;
 
 import org.json.JSONObject;
 
