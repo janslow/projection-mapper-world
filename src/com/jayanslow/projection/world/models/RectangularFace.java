@@ -52,6 +52,7 @@ public class RectangularFace implements Face {
 		return dimensions;
 	}
 
+	@Override
 	public AxisAngle4f getDirection() {
 		return direction;
 	}
