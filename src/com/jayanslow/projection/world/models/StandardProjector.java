@@ -77,6 +77,11 @@ public class StandardProjector extends AbstractRealObject implements Projector {
 	}
 
 	@Override
+	public void setDimensions(Vector3f dimensions) throws IllegalArgumentException {
+		this.dimensions.set(dimensions);
+	}
+
+	@Override
 	public void setResolution(int height, int width) throws IllegalArgumentException {
 		if (height <= 0)
 			throw new IllegalArgumentException("height must be > 0");

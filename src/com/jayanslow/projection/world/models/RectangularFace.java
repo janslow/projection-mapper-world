@@ -76,4 +76,8 @@ public class RectangularFace implements Face {
 		return result;
 	}
 
+	public void setDimensions(Vector2f dimensions) {
+		this.dimensions.set(dimensions);
+	}
+
 }

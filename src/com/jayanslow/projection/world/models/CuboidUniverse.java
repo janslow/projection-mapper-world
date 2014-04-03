@@ -62,4 +62,14 @@ public class CuboidUniverse implements Universe {
 		result = prime * result + (renderMode == null ? 0 : renderMode.hashCode());
 		return result;
 	}
+
+	@Override
+	public void setDimensions(Vector3f dimensions) {
+		this.dimensions.set(dimensions);
+	}
+
+	@Override
+	public void setRenderMode(RenderMode mode) {
+		renderMode = mode;
+	}
 }

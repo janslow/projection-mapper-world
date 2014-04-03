@@ -39,6 +39,16 @@ public interface Projector extends RealObject {
 	public float getThrowRatio();
 
 	/**
+	 * Sets the dimensions of the projector
+	 * 
+	 * @param dimensions
+	 *            New dimensions
+	 * @throws IllegalArgumentException
+	 *             Thrown if dimensions == null
+	 */
+	void setDimensions(Vector3f dimensions) throws NullPointerException;
+
+	/**
 	 * Sets the resolution of the projector
 	 * 
 	 * @param height

@@ -25,4 +25,19 @@ public interface Universe {
 	 * @return Render mode
 	 */
 	public RenderMode getRenderMode();
+
+	/**
+	 * Sets the dimensions of the universe
+	 * 
+	 * dimensions Dimension vector (in mm)
+	 */
+	public void setDimensions(Vector3f dimensions);
+
+	/**
+	 * Sets the render mode
+	 * 
+	 * @param mode
+	 *            Render mode
+	 */
+	public void setRenderMode(RenderMode mode);
 }
