@@ -29,21 +29,10 @@ import com.jayanslow.projection.world.models.StandardProjector;
 import com.jayanslow.projection.world.models.Universe;
 
 public class JsonControllerTest {
-	public String	TEMP_PATH;
-
-	@Before
-	public void setUpBeforeClass() throws Exception {
-		File temp = File.createTempFile("JsonControllerTest_data_", ".json");
-		TEMP_PATH = temp.getAbsolutePath();
-		System.out.println(TEMP_PATH);
-		temp.deleteOnExit();
-	}
-
 	public static Universe makeSampleWorld() {
 		int id = 0;
 		Collection<RealObject> objects = new LinkedList<RealObject>();
-		Universe universe = new CuboidUniverse(id++, new Vector3f(0, 0, 0), new Vector3f(50, 50, 50), objects,
-				DisplayType.WIRE);
+		Universe universe = new CuboidUniverse(new Vector3f(50, 50, 50), objects, RenderMode.WIREFRAME);
 
 		int projector = 0;
 		objects.add(new StandardProjector(id++, projector++, new Vector3f(0, 40, 0), new AxisAngle4f(0, -40, 50, 0),
@@ -58,6 +47,16 @@ public class JsonControllerTest {
 				new Vector3f(10, 10, 10)));
 
 		return universe;
+	}
+
+	public String	TEMP_PATH;
+
+	@Before
+	public void setUpBeforeClass() throws Exception {
+		File temp = File.createTempFile("JsonControllerTest_data_", ".json");
+		TEMP_PATH = temp.getAbsolutePath();
+		System.out.println(TEMP_PATH);
+		temp.deleteOnExit();
 	}
 
 	@Test
@@ -85,12 +84,12 @@ public class JsonControllerTest {
 	}
 
 	@Test
-	public void testReadFromFileDefaultCharset() throws IOException {
+	public void testReadFromFileCustomCharset() throws IOException {
 		Universe expected = makeSampleWorld();
 
-		JsonController jsonController = new JsonController();
+		JsonController jsonController = new JsonController(StandardCharsets.UTF_16BE);
 
-		PrintWriter pw = new PrintWriter(TEMP_PATH, "UTF-8");
+		PrintWriter pw = new PrintWriter(TEMP_PATH, "UTF-16BE");
 		pw.println(jsonController.serialize(expected, false));
 		pw.close();
 
@@ -100,12 +99,12 @@ public class JsonControllerTest {
 	}
 
 	@Test
-	public void testReadFromFileCustomCharset() throws IOException {
+	public void testReadFromFileDefaultCharset() throws IOException {
 		Universe expected = makeSampleWorld();
 
-		JsonController jsonController = new JsonController(StandardCharsets.UTF_16BE);
+		JsonController jsonController = new JsonController();
 
-		PrintWriter pw = new PrintWriter(TEMP_PATH, "UTF-16BE");
+		PrintWriter pw = new PrintWriter(TEMP_PATH, "UTF-8");
 		pw.println(jsonController.serialize(expected, false));
 		pw.close();
 

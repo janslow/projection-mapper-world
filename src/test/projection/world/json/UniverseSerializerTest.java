@@ -21,17 +21,15 @@ import com.jayanslow.projection.world.models.RealObject;
 import com.jayanslow.projection.world.models.RenderMode;
 import com.jayanslow.projection.world.models.Universe;
 
-public class UniverseSerializerTest extends AbstractRealObjectSerializerTest {
+public class UniverseSerializerTest {
 
 	@Test
 	public void testDeserialize() {
 		final JSONObject json = new JSONObject();
 		final SerializerFactory f = mock(SerializerFactory.class);
 
-		prepareDeserializeRealObject(f, json);
-
-		final DisplayType expectedDisplayType = DisplayType.HOLLOW;
-		json.put("display_type", expectedDisplayType.toString().toLowerCase());
+		final RenderMode expectedDisplayType = RenderMode.PROJECTED;
+		json.put("render_mode", expectedDisplayType.toString().toLowerCase());
 
 		final Vector3f expectedDimensions = mock(Vector3f.class);
 		final JSONObject jsonDimensions = mock(JSONObject.class);
@@ -48,8 +46,6 @@ public class UniverseSerializerTest extends AbstractRealObjectSerializerTest {
 
 		final Universe actual = s.deserialize(json);
 
-		testDeserializeRealObject(actual);
-
 		assertEquals(expectedDisplayType, actual.getDisplayType());
 		assertSame(expectedDimensions, actual.getDimensions());
 		assertSame(expectedChildren, actual.getChildren());
@@ -60,15 +56,12 @@ public class UniverseSerializerTest extends AbstractRealObjectSerializerTest {
 		final JSONObject expected = new JSONObject();
 
 		@SuppressWarnings("unchecked")
-		final Universe t = new CuboidUniverse(0, mock(Vector3f.class), mock(Vector3f.class),
-				(java.util.Collection<RealObject>) mock(List.class), DisplayType.WIRE);
+		final Universe t = new CuboidUniverse(mock(Vector3f.class), mock(List.class), RenderMode.WIREFRAME);
 
 		final SerializerFactory f = mock(SerializerFactory.class);
 		final UniverseSerializer s = new UniverseSerializer(f);
 
-		prepareSerializeRealObject(t, expected, f);
-
-		expected.put("display_type", t.getDisplayType().toString().toLowerCase());
+		expected.put("render_mode", t.getDisplayType().toString().toLowerCase());
 
 		final JSONObject expectedDimensions = mock(JSONObject.class);
 		expected.put("dimensions", expectedDimensions);
