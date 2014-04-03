@@ -2,16 +2,7 @@ package com.jayanslow.projection.world.models;
 
 import java.util.Collection;
 
-import javax.vecmath.Vector3f;
-
 public interface Screen extends RealObject {
-	/**
-	 * Gets the dimensions of the object
-	 * 
-	 * @return Dimension vector (in mm)
-	 */
-	public Vector3f getDimensions();
-
 
 	/**
 	 * Gets the face with the specified ID

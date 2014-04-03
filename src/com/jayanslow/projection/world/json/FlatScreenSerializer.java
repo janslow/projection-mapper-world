@@ -26,7 +26,7 @@ public class FlatScreenSerializer extends AbstractScreenSerializer<FlatScreen> {
 
 	@Override
 	protected void serializeScreen(final FlatScreen t, final JSONObject o) {
-		o.put(KEY_DIMENSIONS, getFactory().serialize(Vector2f.class, t.getDimensions2d()));
+		o.put(KEY_DIMENSIONS, getFactory().serialize(Vector2f.class, t.getDimensions()));
 	}
 
 }

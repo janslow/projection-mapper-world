@@ -42,11 +42,6 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 	}
 
 	@Override
-	public Vector3f getDimensions() {
-		return new Vector3f(dimensions.x, dimensions.y, 0);
-	}
-
-	@Override
 	public Face getFace(final int id) {
 		if (id != 0)
 			return null;
@@ -78,7 +73,12 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 		return result;
 	}
 
-	public Vector2f getDimensions2d() {
+	/**
+	 * Gets the dimensions of the object
+	 * 
+	 * @return Dimension vector (in mm)
+	 */
+	public Vector2f getDimensions() {
 		return dimensions;
 	}
 
