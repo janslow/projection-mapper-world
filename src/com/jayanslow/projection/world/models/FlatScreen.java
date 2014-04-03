@@ -8,14 +8,14 @@ import javax.vecmath.Vector3f;
 
 public class FlatScreen extends AbstractRealObject implements Screen {
 
-	private Vector2f	dimensions;
-	private final Face	face;
-	private final int	screenId;
+	private final Vector2f	dimensions;
+	private final Face		face;
+	private final int		screenId;
 
 	public FlatScreen(final int id, final int screenId, final Vector3f position, final Rotation3f rotation,
 			final Vector2f dimensions) {
 		super(RealObjectType.SCREEN, id, position, rotation);
-		this.dimensions = dimensions;
+		this.dimensions = new Vector2f(dimensions);
 		this.screenId = screenId;
 
 		face = new RectangularFace(0, new Vector3f(0, 0, 0), getRotation(), this.dimensions);
@@ -46,7 +46,7 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 	 * @return Dimension vector (in mm)
 	 */
 	public Vector2f getDimensions() {
-		return dimensions;
+		return new Vector2f(dimensions);
 	}
 
 	@Override
@@ -84,6 +84,6 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 	public void setDimensions(Vector2f dimensions) throws NullPointerException {
 		if (dimensions == null)
 			throw new NullPointerException("FlatScreen.dimensions can not be null");
-		this.dimensions = dimensions;
+		this.dimensions.set(dimensions);
 	}
 }

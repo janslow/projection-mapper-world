@@ -12,7 +12,7 @@ public class CuboidUniverse implements Universe {
 
 	public CuboidUniverse(final Vector3f dimensions, final Collection<RealObject> children, final RenderMode displayType) {
 		this.children = children;
-		this.dimensions = dimensions;
+		this.dimensions = new Vector3f(dimensions);
 		this.displayType = displayType;
 	}
 
@@ -45,7 +45,7 @@ public class CuboidUniverse implements Universe {
 
 	@Override
 	public Vector3f getDimensions() {
-		return dimensions;
+		return new Vector3f(dimensions);
 	}
 
 	@Override

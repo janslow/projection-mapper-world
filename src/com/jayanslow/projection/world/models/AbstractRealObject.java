@@ -5,7 +5,7 @@ import javax.vecmath.Vector3f;
 public abstract class AbstractRealObject implements RealObject {
 
 	private final int				id;
-	private Vector3f				position;
+	private final Vector3f			position;
 	private final RealObjectType	type;
 	private final Rotation3f		rotation;
 
@@ -13,7 +13,7 @@ public abstract class AbstractRealObject implements RealObject {
 		super();
 		this.type = type;
 		this.id = id;
-		this.position = position;
+		this.position = new Vector3f(position);
 		this.rotation = new Rotation3f(rotation);
 	}
 
@@ -50,7 +50,7 @@ public abstract class AbstractRealObject implements RealObject {
 
 	@Override
 	public Vector3f getPosition() {
-		return position;
+		return new Vector3f(position);
 	}
 
 	@Override
@@ -78,7 +78,7 @@ public abstract class AbstractRealObject implements RealObject {
 	public void setPosition(Vector3f position) throws NullPointerException {
 		if (position == null)
 			throw new NullPointerException("position must not be null");
-		this.position = position;
+		this.position.set(position);
 	}
 
 	@Override

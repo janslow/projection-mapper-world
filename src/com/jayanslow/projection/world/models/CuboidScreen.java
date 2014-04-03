@@ -16,7 +16,7 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 	public CuboidScreen(final int id, final int screenId, final Vector3f position, final Rotation3f rotation,
 			final Vector3f dimensions) {
 		super(RealObjectType.SCREEN, id, position, rotation);
-		this.dimensions = dimensions;
+		this.dimensions = new Vector3f(dimensions);
 		this.screenId = screenId;
 
 		final float x = dimensions.x, y = dimensions.y, z = dimensions.z;
@@ -65,7 +65,7 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 	 * @return Dimension vector (in mm)
 	 */
 	public Vector3f getDimensions() {
-		return dimensions;
+		return new Vector3f(dimensions);
 	}
 
 	@Override

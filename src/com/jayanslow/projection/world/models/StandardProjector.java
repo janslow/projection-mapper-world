@@ -13,7 +13,7 @@ public class StandardProjector extends AbstractRealObject implements Projector {
 	public StandardProjector(final int id, final int projectorId, final Vector3f position, final Rotation3f rotation,
 			final Vector3f dimensions, final int height, final int width, final float throwRatio) {
 		super(RealObjectType.PROJECTOR, id, position, rotation);
-		this.dimensions = dimensions;
+		this.dimensions = new Vector3f(dimensions);
 		this.height = height;
 		this.projectorId = projectorId;
 		this.throwRatio = throwRatio;
@@ -42,7 +42,7 @@ public class StandardProjector extends AbstractRealObject implements Projector {
 
 	@Override
 	public Vector3f getDimensions() {
-		return dimensions;
+		return new Vector3f(dimensions);
 	}
 
 	@Override

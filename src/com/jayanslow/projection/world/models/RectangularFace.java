@@ -12,9 +12,9 @@ public class RectangularFace implements Face {
 
 	public RectangularFace(final int faceId, final Vector3f position, final Rotation3f rotation,
 			final Vector2f dimensions) {
-		this.position = position;
-		this.rotation = rotation;
-		this.dimensions = dimensions;
+		this.position = new Vector3f(position);
+		this.rotation = new Rotation3f(rotation);
+		this.dimensions = new Vector2f(dimensions);
 		this.faceId = faceId;
 	}
 
@@ -48,7 +48,7 @@ public class RectangularFace implements Face {
 	}
 
 	public Vector2f getDimensions() {
-		return dimensions;
+		return new Vector2f(dimensions);
 	}
 
 	@Override
@@ -63,7 +63,7 @@ public class RectangularFace implements Face {
 
 	@Override
 	public Vector3f getPosition() {
-		return position;
+		return new Vector3f(position);
 	}
 
 	@Override
