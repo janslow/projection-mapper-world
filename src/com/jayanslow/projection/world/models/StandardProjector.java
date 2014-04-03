@@ -43,6 +43,7 @@ public class StandardProjector extends AbstractRealObject implements Projector {
 
 	@Override
 	public Vector3f getDimensions() {
+		return dimensions;
 	}
 
 	@Override
