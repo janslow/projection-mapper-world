@@ -37,7 +37,7 @@ public class FlatScreenSerializerTest extends AbstractScreenSerializerTest {
 
 		testDeserializeScreen(actual);
 
-		assertSame(expectedDimensions, actual.getDimensions2d());
+		assertSame(expectedDimensions, actual.getDimensions());
 	}
 
 	@Test
@@ -57,7 +57,7 @@ public class FlatScreenSerializerTest extends AbstractScreenSerializerTest {
 		// Prepare Dimensions
 		final JSONObject expectedDimensions = mock(JSONObject.class);
 		expected.put("dimensions", expectedDimensions);
-		when(f.serialize(Vector2f.class, t.getDimensions2d())).thenReturn(expectedDimensions);
+		when(f.serialize(Vector2f.class, t.getDimensions())).thenReturn(expectedDimensions);
 
 		final JSONObject actual = new JSONObject();
 		s.serialize(t, actual);
