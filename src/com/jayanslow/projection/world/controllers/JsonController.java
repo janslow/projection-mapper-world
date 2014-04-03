@@ -10,12 +10,12 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
-import com.jayanslow.projection.world.json.AxisAngle4fSerializer;
 import com.jayanslow.projection.world.json.CuboidScreenSerializer;
 import com.jayanslow.projection.world.json.FlatScreenSerializer;
 import com.jayanslow.projection.world.json.MapSerializerFactory;
 import com.jayanslow.projection.world.json.ProjectorSerializer;
 import com.jayanslow.projection.world.json.RealObjectSerializer;
+import com.jayanslow.projection.world.json.Rotation3fSerializer;
 import com.jayanslow.projection.world.json.ScreenSerializer;
 import com.jayanslow.projection.world.json.Serializer;
 import com.jayanslow.projection.world.json.SerializerFactory;
@@ -27,7 +27,7 @@ import com.jayanslow.projection.world.models.Universe;
 public class JsonController {
 	private static Charset			DEFAULT_CHARSET	= StandardCharsets.UTF_8;
 	private final SerializerFactory	f;
-	private Charset					charset;
+	private final Charset			charset;
 
 	public JsonController() {
 		this(DEFAULT_CHARSET);
@@ -41,7 +41,7 @@ public class JsonController {
 		// Vecmath Serializers
 		f.addSerializer(new Vector2fSerializer(f));
 		f.addSerializer(new Vector3fSerializer(f));
-		f.addSerializer(new AxisAngle4fSerializer(f));
+		f.addSerializer(new Rotation3fSerializer(f));
 
 		f.addSerializer(new RealObjectSerializer(f));
 
@@ -61,15 +61,15 @@ public class JsonController {
 		return f.deserialize(Universe.class, o);
 	}
 
-	public String serialize(Universe universe, boolean pretty) {
-		JSONObject o = f.serialize(Universe.class, universe);
-		return o.toString(pretty ? 4 : 0);
-	}
-
 	public Universe readFromFile(String path) throws IOException {
 		byte[] encoded = Files.readAllBytes(Paths.get(path));
 		String json = charset.decode(ByteBuffer.wrap(encoded)).toString();
 		return deserialize(json);
+	}
+
+	public String serialize(Universe universe, boolean pretty) {
+		JSONObject o = f.serialize(Universe.class, universe);
+		return o.toString(pretty ? 4 : 0);
 	}
 
 	public void writeToFile(Universe universe, String path, boolean pretty) throws IOException {
