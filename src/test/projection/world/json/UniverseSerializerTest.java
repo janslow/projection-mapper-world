@@ -46,7 +46,7 @@ public class UniverseSerializerTest {
 
 		final Universe actual = s.deserialize(json);
 
-		assertEquals(expectedDisplayType, actual.getDisplayType());
+		assertEquals(expectedDisplayType, actual.getRenderMode());
 		assertSame(expectedDimensions, actual.getDimensions());
 		assertSame(expectedChildren, actual.getChildren());
 	}
@@ -61,7 +61,7 @@ public class UniverseSerializerTest {
 		final SerializerFactory f = mock(SerializerFactory.class);
 		final UniverseSerializer s = new UniverseSerializer(f);
 
-		expected.put("render_mode", t.getDisplayType().toString().toLowerCase());
+		expected.put("render_mode", t.getRenderMode().toString().toLowerCase());
 
 		final JSONObject expectedDimensions = mock(JSONObject.class);
 		expected.put("dimensions", expectedDimensions);
