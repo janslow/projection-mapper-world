@@ -1,10 +1,14 @@
 package com.jayanslow.projection.world.models;
 
+import javax.vecmath.Vector3f;
 
 public interface Projector extends RealObject {
 	/**
+	 * Gets the dimensions of the projector
 	 * 
+	 * @return Projector dimensions (in mm)
 	 */
+	public Vector3f getDimensions();
 
 	/**
 	 * Gets the ID of the projector
