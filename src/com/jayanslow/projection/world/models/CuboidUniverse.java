@@ -8,12 +8,12 @@ public class CuboidUniverse implements Universe {
 
 	private final Collection<RealObject>	children;
 	private final Vector3f					dimensions;
-	private final RenderMode				displayType;
+	private RenderMode						renderMode;
 
-	public CuboidUniverse(final Vector3f dimensions, final Collection<RealObject> children, final RenderMode displayType) {
+	public CuboidUniverse(final Vector3f dimensions, final Collection<RealObject> children, final RenderMode renderMode) {
 		this.children = children;
 		this.dimensions = new Vector3f(dimensions);
-		this.displayType = displayType;
+		this.renderMode = renderMode;
 	}
 
 	@Override
@@ -33,7 +33,7 @@ public class CuboidUniverse implements Universe {
 				return false;
 		} else if (!dimensions.equals(other.dimensions))
 			return false;
-		if (displayType != other.displayType)
+		if (renderMode != other.renderMode)
 			return false;
 		return true;
 	}
@@ -49,8 +49,8 @@ public class CuboidUniverse implements Universe {
 	}
 
 	@Override
-	public RenderMode getDisplayType() {
-		return displayType;
+	public RenderMode getRenderMode() {
+		return renderMode;
 	}
 
 	@Override
@@ -59,7 +59,7 @@ public class CuboidUniverse implements Universe {
 		int result = 0;
 		result = prime * result + (children == null ? 0 : children.hashCode());
 		result = prime * result + (dimensions == null ? 0 : dimensions.hashCode());
-		result = prime * result + (displayType == null ? 0 : displayType.hashCode());
+		result = prime * result + (renderMode == null ? 0 : renderMode.hashCode());
 		return result;
 	}
 }

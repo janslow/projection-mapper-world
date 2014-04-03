@@ -20,9 +20,9 @@ public interface Universe {
 	public Vector3f getDimensions();
 
 	/**
-	 * Get the display type
+	 * Get the render mode
 	 * 
-	 * @return Display type
+	 * @return Render mode
 	 */
-	public RenderMode getDisplayType();
+	public RenderMode getRenderMode();
 }

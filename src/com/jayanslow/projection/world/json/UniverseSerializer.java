@@ -43,7 +43,7 @@ public class UniverseSerializer extends AbstractSerializer<Universe> {
 		final JSONObject jsonDimensions = getFactory().serialize(Vector3f.class, t.getDimensions());
 		o.put(KEY_DIMENSIONS, jsonDimensions);
 
-		final String jsonDisplayType = t.getDisplayType().toString().toLowerCase();
+		final String jsonDisplayType = t.getRenderMode().toString().toLowerCase();
 		o.put(KEY_RENDER_MODE, jsonDisplayType);
 	}
 
