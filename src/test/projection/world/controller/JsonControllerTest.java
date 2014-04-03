@@ -12,7 +12,6 @@ import java.nio.file.Paths;
 import java.util.Collection;
 import java.util.LinkedList;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector2f;
 import javax.vecmath.Vector3f;
 
@@ -25,6 +24,7 @@ import com.jayanslow.projection.world.models.CuboidUniverse;
 import com.jayanslow.projection.world.models.FlatScreen;
 import com.jayanslow.projection.world.models.RealObject;
 import com.jayanslow.projection.world.models.RenderMode;
+import com.jayanslow.projection.world.models.Rotation3f;
 import com.jayanslow.projection.world.models.StandardProjector;
 import com.jayanslow.projection.world.models.Universe;
 
@@ -35,16 +35,16 @@ public class JsonControllerTest {
 		Universe universe = new CuboidUniverse(new Vector3f(50, 50, 50), objects, RenderMode.WIREFRAME);
 
 		int projector = 0;
-		objects.add(new StandardProjector(id++, projector++, new Vector3f(0, 40, 0), new AxisAngle4f(0, -40, 50, 0),
+		objects.add(new StandardProjector(id++, projector++, new Vector3f(0, 40, 0), new Rotation3f(-40, 50, 0),
 				new Vector3f(10, 20, 30), 768, 1024, 3));
-		objects.add(new StandardProjector(id++, projector++, new Vector3f(0, 50, 30), new AxisAngle4f(0, -50, 20, 0),
+		objects.add(new StandardProjector(id++, projector++, new Vector3f(0, 50, 30), new Rotation3f(-50, 20, 0),
 				new Vector3f(10, 20, 30), 768, 1024, 1));
 
 		int screen = 0;
-		objects.add(new FlatScreen(id++, screen++, new Vector3f(0, 0, 50), new AxisAngle4f(0, 0, -50, 0), new Vector2f(
-				50, 50)));
-		objects.add(new CuboidScreen(id++, screen++, new Vector3f(20, 0, 35), new AxisAngle4f(0, 0, -50, 0),
-				new Vector3f(10, 10, 10)));
+		objects.add(new FlatScreen(id++, screen++, new Vector3f(0, 0, 50), new Rotation3f(0, -50, 0), new Vector2f(50,
+				50)));
+		objects.add(new CuboidScreen(id++, screen++, new Vector3f(20, 0, 35), new Rotation3f(0, -50, 0), new Vector3f(
+				10, 10, 10)));
 
 		return universe;
 	}

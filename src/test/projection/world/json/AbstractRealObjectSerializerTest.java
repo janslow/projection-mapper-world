@@ -5,19 +5,19 @@ import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
 
 import com.jayanslow.projection.world.json.SerializerFactory;
 import com.jayanslow.projection.world.models.RealObject;
+import com.jayanslow.projection.world.models.Rotation3f;
 
 public class AbstractRealObjectSerializerTest {
 
 	private int			expectedId;
 	private Vector3f	expectedPosition;
-	private AxisAngle4f	expectedDirection;
+	private Rotation3f	expectedRotation;
 
 	public AbstractRealObjectSerializerTest() {
 		super();
@@ -32,10 +32,10 @@ public class AbstractRealObjectSerializerTest {
 		json.put("position", jsonPosition);
 		when(f.deserialize(Vector3f.class, jsonPosition)).thenReturn(expectedPosition);
 
-		expectedDirection = mock(AxisAngle4f.class);
+		expectedRotation = new Rotation3f(8, 3, 9);
 		final JSONObject jsonDirection = mock(JSONObject.class);
-		json.put("direction", jsonDirection);
-		when(f.deserialize(AxisAngle4f.class, jsonDirection)).thenReturn(expectedDirection);
+		json.put("rotation", jsonDirection);
+		when(f.deserialize(Rotation3f.class, jsonDirection)).thenReturn(expectedRotation);
 	}
 
 	protected void prepareSerializeRealObject(final RealObject object, final JSONObject expected,
@@ -47,15 +47,15 @@ public class AbstractRealObjectSerializerTest {
 		expected.put("position", expectedPosition);
 		when(f.serialize(Vector3f.class, object.getPosition())).thenReturn(expectedPosition);
 
-		final JSONObject expectedDirection = mock(JSONObject.class);
-		expected.put("direction", expectedDirection);
-		when(f.serialize(AxisAngle4f.class, object.getDirection())).thenReturn(expectedDirection);
+		final JSONObject expectedRotation = mock(JSONObject.class);
+		expected.put("rotation", expectedRotation);
+		when(f.serialize(Rotation3f.class, object.getRotation())).thenReturn(expectedRotation);
 	}
 
 	protected void testDeserializeRealObject(final RealObject actual) {
 		assertEquals(expectedId, actual.getId());
 		assertSame(expectedPosition, actual.getPosition());
-		assertSame(expectedDirection, actual.getDirection());
+		assertEquals(expectedRotation, actual.getRotation());
 	}
 
 }

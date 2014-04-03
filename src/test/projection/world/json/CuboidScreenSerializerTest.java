@@ -5,7 +5,6 @@ import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
@@ -14,6 +13,7 @@ import org.junit.Test;
 import com.jayanslow.projection.world.json.CuboidScreenSerializer;
 import com.jayanslow.projection.world.json.SerializerFactory;
 import com.jayanslow.projection.world.models.CuboidScreen;
+import com.jayanslow.projection.world.models.Rotation3f;
 
 public class CuboidScreenSerializerTest extends AbstractScreenSerializerTest {
 
@@ -45,9 +45,9 @@ public class CuboidScreenSerializerTest extends AbstractScreenSerializerTest {
 
 		// Construct CuboidScreen
 		final Vector3f position = mock(Vector3f.class);
-		final AxisAngle4f direction = mock(AxisAngle4f.class);
+		final Rotation3f rotation = mock(Rotation3f.class);
 		final Vector3f dimensions = mock(Vector3f.class);
-		final CuboidScreen t = new CuboidScreen(1, 2, position, direction, dimensions);
+		final CuboidScreen t = new CuboidScreen(1, 2, position, rotation, dimensions);
 
 		// Create Serializer and SerializerFactory
 		final SerializerFactory f = mock(SerializerFactory.class);

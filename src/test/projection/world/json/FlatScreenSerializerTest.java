@@ -5,7 +5,6 @@ import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector2f;
 import javax.vecmath.Vector3f;
 
@@ -15,6 +14,7 @@ import org.junit.Test;
 import com.jayanslow.projection.world.json.FlatScreenSerializer;
 import com.jayanslow.projection.world.json.SerializerFactory;
 import com.jayanslow.projection.world.models.FlatScreen;
+import com.jayanslow.projection.world.models.Rotation3f;
 
 public class FlatScreenSerializerTest extends AbstractScreenSerializerTest {
 
@@ -45,9 +45,9 @@ public class FlatScreenSerializerTest extends AbstractScreenSerializerTest {
 		final JSONObject expected = new JSONObject();
 
 		final Vector3f position = mock(Vector3f.class);
-		final AxisAngle4f direction = mock(AxisAngle4f.class);
+		final Rotation3f rotation = mock(Rotation3f.class);
 		final Vector2f dimensions = mock(Vector2f.class);
-		final FlatScreen t = new FlatScreen(1, 2, position, direction, dimensions);
+		final FlatScreen t = new FlatScreen(1, 2, position, rotation, dimensions);
 
 		final SerializerFactory f = mock(SerializerFactory.class);
 		final FlatScreenSerializer s = new FlatScreenSerializer(f);

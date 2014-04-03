@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import javax.vecmath.AxisAngle4f;
 import javax.vecmath.Vector3f;
 
 import org.json.JSONObject;
@@ -14,6 +13,7 @@ import org.junit.Test;
 import com.jayanslow.projection.world.json.ProjectorSerializer;
 import com.jayanslow.projection.world.json.SerializerFactory;
 import com.jayanslow.projection.world.models.Projector;
+import com.jayanslow.projection.world.models.Rotation3f;
 import com.jayanslow.projection.world.models.StandardProjector;
 
 public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
@@ -56,7 +56,7 @@ public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 	public void testSerialize() {
 		final JSONObject expected = new JSONObject();
 
-		final Projector t = new StandardProjector(0, 1, mock(Vector3f.class), mock(AxisAngle4f.class),
+		final Projector t = new StandardProjector(0, 1, mock(Vector3f.class), mock(Rotation3f.class),
 				mock(Vector3f.class), 2, 3, 4.0f);
 
 		final SerializerFactory f = mock(SerializerFactory.class);
