@@ -2,7 +2,6 @@ package test.projection.world.json;
 
 import static com.jayanslow.utils.junit.JsonJunitUtils.assertJsonEquals;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -35,11 +34,6 @@ public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 		json.put("resolution_width", expectedWidth);
 		json.put("throw_ratio", expectedThrow);
 
-		final AxisAngle4f expectedDirection = mock(AxisAngle4f.class);
-		final JSONObject jsonDirection = mock(JSONObject.class);
-		json.put("direction", jsonDirection);
-		when(f.deserialize(AxisAngle4f.class, jsonDirection)).thenReturn(expectedDirection);
-
 		final ProjectorSerializer s = new ProjectorSerializer(f);
 
 		final Projector actual = s.deserialize(json);
@@ -50,8 +44,6 @@ public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 		assertEquals(expectedHeight, actual.getResolutionHeight());
 		assertEquals(expectedWidth, actual.getResolutionWidth());
 		assertEquals(expectedThrow, actual.getThrowRatio(), 0);
-
-		assertSame(expectedDirection, actual.getDirection());
 	}
 
 	@Test
@@ -70,14 +62,9 @@ public class ProjectorSerializerTest extends AbstractRealObjectSerializerTest {
 		expected.put("resolution_width", t.getResolutionWidth());
 		expected.put("throw_ratio", t.getThrowRatio());
 
-		final JSONObject expectedDirection = mock(JSONObject.class);
-		expected.put("direction", expectedDirection);
-		when(f.serialize(AxisAngle4f.class, t.getDirection())).thenReturn(expectedDirection);
-
 		final JSONObject actual = new JSONObject();
 		s.serialize(t, actual);
 
 		assertJsonEquals(expected, actual);
 	}
-
 }
