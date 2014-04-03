@@ -22,9 +22,9 @@ import org.junit.Test;
 import com.jayanslow.projection.world.controllers.JsonController;
 import com.jayanslow.projection.world.models.CuboidScreen;
 import com.jayanslow.projection.world.models.CuboidUniverse;
-import com.jayanslow.projection.world.models.DisplayType;
 import com.jayanslow.projection.world.models.FlatScreen;
 import com.jayanslow.projection.world.models.RealObject;
+import com.jayanslow.projection.world.models.RenderMode;
 import com.jayanslow.projection.world.models.StandardProjector;
 import com.jayanslow.projection.world.models.Universe;
 

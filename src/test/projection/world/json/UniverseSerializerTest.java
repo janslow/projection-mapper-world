@@ -17,8 +17,8 @@ import org.junit.Test;
 import com.jayanslow.projection.world.json.SerializerFactory;
 import com.jayanslow.projection.world.json.UniverseSerializer;
 import com.jayanslow.projection.world.models.CuboidUniverse;
-import com.jayanslow.projection.world.models.DisplayType;
 import com.jayanslow.projection.world.models.RealObject;
+import com.jayanslow.projection.world.models.RenderMode;
 import com.jayanslow.projection.world.models.Universe;
 
 public class UniverseSerializerTest extends AbstractRealObjectSerializerTest {
