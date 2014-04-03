@@ -8,7 +8,7 @@ public class CuboidUniverse extends AbstractRealObject implements Universe {
 
 	private final Collection<RealObject>	children;
 	private final Vector3f					dimensions;
-	private final DisplayType				displayType;
+	private final RenderMode				displayType;
 
 	public CuboidUniverse(final int id, final Vector3f position, final Vector3f dimensions,
 			final Collection<RealObject> children, final DisplayType displayType) {
@@ -53,7 +53,7 @@ public class CuboidUniverse extends AbstractRealObject implements Universe {
 	}
 
 	@Override
-	public DisplayType getDisplayType() {
+	public RenderMode getDisplayType() {
 		return displayType;
 	}
 

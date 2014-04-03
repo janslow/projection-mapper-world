@@ -24,5 +24,5 @@ public interface Universe extends RealObject {
 	 * 
 	 * @return Display type
 	 */
-	public DisplayType getDisplayType();
+	public RenderMode getDisplayType();
 }
