@@ -1,7 +1,7 @@
 package test.projection.world.json;
 
 import static com.jayanslow.utils.junit.JsonJunitUtils.assertJsonEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -25,7 +25,7 @@ public class CuboidScreenSerializerTest extends AbstractScreenSerializerTest {
 		prepareDeserializeScreen(f, json);
 
 		// Prepare Dimensions
-		Vector3f expectedDimensions = mock(Vector3f.class);
+		Vector3f expectedDimensions = new Vector3f(12, 57, 33);
 		JSONObject jsonDimensions = mock(JSONObject.class);
 		json.put("dimensions", jsonDimensions);
 		when(f.deserialize(Vector3f.class, jsonDimensions)).thenReturn(expectedDimensions);
@@ -36,7 +36,7 @@ public class CuboidScreenSerializerTest extends AbstractScreenSerializerTest {
 
 		testDeserializeScreen(actual);
 
-		assertSame(expectedDimensions, actual.getDimensions());
+		assertEquals(expectedDimensions, actual.getDimensions());
 	}
 
 	@Test
@@ -44,9 +44,9 @@ public class CuboidScreenSerializerTest extends AbstractScreenSerializerTest {
 		final JSONObject expected = new JSONObject();
 
 		// Construct CuboidScreen
-		final Vector3f position = mock(Vector3f.class);
-		final Rotation3f rotation = mock(Rotation3f.class);
-		final Vector3f dimensions = mock(Vector3f.class);
+		final Vector3f position = new Vector3f(15, 7, 28);
+		final Rotation3f rotation = new Rotation3f(12, 68, 3);
+		final Vector3f dimensions = new Vector3f(125, 72, 2128);
 		final CuboidScreen t = new CuboidScreen(1, 2, position, rotation, dimensions);
 
 		// Create Serializer and SerializerFactory

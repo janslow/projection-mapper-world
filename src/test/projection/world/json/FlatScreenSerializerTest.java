@@ -1,7 +1,7 @@
 package test.projection.world.json;
 
 import static com.jayanslow.utils.junit.JsonJunitUtils.assertJsonEquals;
-import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -26,7 +26,7 @@ public class FlatScreenSerializerTest extends AbstractScreenSerializerTest {
 		prepareDeserializeScreen(f, json);
 
 		// Prepare Dimensions
-		Vector2f expectedDimensions = mock(Vector2f.class);
+		Vector2f expectedDimensions = new Vector2f(12, 43);
 		JSONObject jsonDimensions = mock(JSONObject.class);
 		json.put("dimensions", jsonDimensions);
 		when(f.deserialize(Vector2f.class, jsonDimensions)).thenReturn(expectedDimensions);
@@ -37,7 +37,7 @@ public class FlatScreenSerializerTest extends AbstractScreenSerializerTest {
 
 		testDeserializeScreen(actual);
 
-		assertSame(expectedDimensions, actual.getDimensions());
+		assertEquals(expectedDimensions, actual.getDimensions());
 	}
 
 	@Test

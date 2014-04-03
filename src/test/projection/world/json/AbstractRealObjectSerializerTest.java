@@ -1,7 +1,6 @@
 package test.projection.world.json;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -27,7 +26,7 @@ public class AbstractRealObjectSerializerTest {
 		expectedId = 3;
 		json.put("id", expectedId);
 
-		expectedPosition = mock(Vector3f.class);
+		expectedPosition = new Vector3f(0, 4, 8);
 		final JSONObject jsonPosition = mock(JSONObject.class);
 		json.put("position", jsonPosition);
 		when(f.deserialize(Vector3f.class, jsonPosition)).thenReturn(expectedPosition);
@@ -54,7 +53,7 @@ public class AbstractRealObjectSerializerTest {
 
 	protected void testDeserializeRealObject(final RealObject actual) {
 		assertEquals(expectedId, actual.getId());
-		assertSame(expectedPosition, actual.getPosition());
+		assertEquals(expectedPosition, actual.getPosition());
 		assertEquals(expectedRotation, actual.getRotation());
 	}
 
