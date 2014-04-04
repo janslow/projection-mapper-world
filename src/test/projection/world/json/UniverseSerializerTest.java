@@ -18,7 +18,6 @@ import com.jayanslow.projection.world.json.SerializerFactory;
 import com.jayanslow.projection.world.json.UniverseSerializer;
 import com.jayanslow.projection.world.models.CuboidUniverse;
 import com.jayanslow.projection.world.models.RealObject;
-import com.jayanslow.projection.world.models.RenderMode;
 import com.jayanslow.projection.world.models.Universe;
 
 public class UniverseSerializerTest {
@@ -27,9 +26,6 @@ public class UniverseSerializerTest {
 	public void testDeserialize() {
 		final JSONObject json = new JSONObject();
 		final SerializerFactory f = mock(SerializerFactory.class);
-
-		final RenderMode expectedDisplayType = RenderMode.PROJECTED;
-		json.put("render_mode", expectedDisplayType.toString().toLowerCase());
 
 		final Vector3f expectedDimensions = new Vector3f(12, 432, 2);
 		final JSONObject jsonDimensions = mock(JSONObject.class);
@@ -46,7 +42,6 @@ public class UniverseSerializerTest {
 
 		final Universe actual = s.deserialize(json);
 
-		assertEquals(expectedDisplayType, actual.getRenderMode());
 		assertEquals(expectedDimensions, actual.getDimensions());
 		assertSame(expectedChildren, actual.getChildren());
 	}
@@ -56,12 +51,10 @@ public class UniverseSerializerTest {
 		final JSONObject expected = new JSONObject();
 
 		@SuppressWarnings("unchecked")
-		final Universe t = new CuboidUniverse(mock(Vector3f.class), mock(List.class), RenderMode.WIREFRAME);
+		final Universe t = new CuboidUniverse(mock(Vector3f.class), mock(List.class));
 
 		final SerializerFactory f = mock(SerializerFactory.class);
 		final UniverseSerializer s = new UniverseSerializer(f);
-
-		expected.put("render_mode", t.getRenderMode().toString().toLowerCase());
 
 		final JSONObject expectedDimensions = mock(JSONObject.class);
 		expected.put("dimensions", expectedDimensions);

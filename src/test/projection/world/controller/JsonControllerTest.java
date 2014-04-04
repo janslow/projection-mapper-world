@@ -23,7 +23,6 @@ import com.jayanslow.projection.world.models.CuboidScreen;
 import com.jayanslow.projection.world.models.CuboidUniverse;
 import com.jayanslow.projection.world.models.FlatScreen;
 import com.jayanslow.projection.world.models.RealObject;
-import com.jayanslow.projection.world.models.RenderMode;
 import com.jayanslow.projection.world.models.Rotation3f;
 import com.jayanslow.projection.world.models.StandardProjector;
 import com.jayanslow.projection.world.models.Universe;
@@ -32,7 +31,7 @@ public class JsonControllerTest {
 	public static Universe makeSampleWorld() {
 		int id = 0;
 		Collection<RealObject> objects = new LinkedList<RealObject>();
-		Universe universe = new CuboidUniverse(new Vector3f(50, 50, 50), objects, RenderMode.WIREFRAME);
+		Universe universe = new CuboidUniverse(new Vector3f(50, 50, 50), objects);
 
 		int projector = 0;
 		objects.add(new StandardProjector(id++, projector++, new Vector3f(0, 40, 0), new Rotation3f(-40, 50, 0),
