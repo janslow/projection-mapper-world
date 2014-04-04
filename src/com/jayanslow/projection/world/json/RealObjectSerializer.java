@@ -7,6 +7,8 @@ import com.jayanslow.projection.world.models.Projector;
 import com.jayanslow.projection.world.models.RealObject;
 import com.jayanslow.projection.world.models.RealObjectType;
 import com.jayanslow.projection.world.models.Screen;
+import com.jayanslow.utils.serializer.AbstractSerializer;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public class RealObjectSerializer extends AbstractSerializer<RealObject> {
 

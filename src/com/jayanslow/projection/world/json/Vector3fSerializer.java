@@ -5,6 +5,9 @@ import javax.vecmath.Vector3f;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.jayanslow.utils.serializer.AbstractSerializer;
+import com.jayanslow.utils.serializer.SerializerFactory;
+
 public class Vector3fSerializer extends AbstractSerializer<Vector3f> {
 
 	public static final String	KEY_X	= "x";

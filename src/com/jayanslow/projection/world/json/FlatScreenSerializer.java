@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import com.jayanslow.projection.world.models.FlatScreen;
 import com.jayanslow.projection.world.models.Rotation3f;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public class FlatScreenSerializer extends AbstractScreenSerializer<FlatScreen> {
 

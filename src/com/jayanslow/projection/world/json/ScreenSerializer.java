@@ -7,6 +7,8 @@ import com.jayanslow.projection.world.models.CuboidScreen;
 import com.jayanslow.projection.world.models.FlatScreen;
 import com.jayanslow.projection.world.models.Screen;
 import com.jayanslow.projection.world.models.ScreenType;
+import com.jayanslow.utils.serializer.AbstractSerializer;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public class ScreenSerializer extends AbstractSerializer<Screen> {
 

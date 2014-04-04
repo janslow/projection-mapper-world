@@ -4,6 +4,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import com.jayanslow.projection.world.models.Rotation3f;
+import com.jayanslow.utils.serializer.AbstractSerializer;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public class Rotation3fSerializer extends AbstractSerializer<Rotation3f> {
 

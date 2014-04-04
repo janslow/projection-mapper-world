@@ -8,6 +8,7 @@ import org.json.JSONObject;
 import com.jayanslow.projection.world.models.Projector;
 import com.jayanslow.projection.world.models.Rotation3f;
 import com.jayanslow.projection.world.models.StandardProjector;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public class ProjectorSerializer extends AbstractRealObjectSerializer<Projector> {
 

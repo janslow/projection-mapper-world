@@ -7,6 +7,7 @@ import org.json.JSONObject;
 
 import com.jayanslow.projection.world.models.Rotation3f;
 import com.jayanslow.projection.world.models.Screen;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public abstract class AbstractScreenSerializer<T extends Screen> extends AbstractRealObjectSerializer<T> {
 	public static final String	KEY_SCREEN_ID	= "screen_id";

@@ -11,6 +11,8 @@ import org.json.JSONObject;
 import com.jayanslow.projection.world.models.CuboidUniverse;
 import com.jayanslow.projection.world.models.RealObject;
 import com.jayanslow.projection.world.models.Universe;
+import com.jayanslow.utils.serializer.AbstractSerializer;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public class UniverseSerializer extends AbstractSerializer<Universe> {
 	public static final String	KEY_CHILDREN	= "children";

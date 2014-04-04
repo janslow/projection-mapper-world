@@ -7,6 +7,8 @@ import org.json.JSONObject;
 
 import com.jayanslow.projection.world.models.RealObject;
 import com.jayanslow.projection.world.models.Rotation3f;
+import com.jayanslow.utils.serializer.AbstractSerializer;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public abstract class AbstractRealObjectSerializer<T extends RealObject> extends AbstractSerializer<T> {
 	public static final String	KEY_ID			= "id";

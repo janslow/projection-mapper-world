@@ -12,17 +12,17 @@ import org.json.JSONObject;
 
 import com.jayanslow.projection.world.json.CuboidScreenSerializer;
 import com.jayanslow.projection.world.json.FlatScreenSerializer;
-import com.jayanslow.projection.world.json.MapSerializerFactory;
 import com.jayanslow.projection.world.json.ProjectorSerializer;
 import com.jayanslow.projection.world.json.RealObjectSerializer;
 import com.jayanslow.projection.world.json.Rotation3fSerializer;
 import com.jayanslow.projection.world.json.ScreenSerializer;
-import com.jayanslow.projection.world.json.Serializer;
-import com.jayanslow.projection.world.json.SerializerFactory;
 import com.jayanslow.projection.world.json.UniverseSerializer;
 import com.jayanslow.projection.world.json.Vector2fSerializer;
 import com.jayanslow.projection.world.json.Vector3fSerializer;
 import com.jayanslow.projection.world.models.Universe;
+import com.jayanslow.utils.serializer.MapSerializerFactory;
+import com.jayanslow.utils.serializer.Serializer;
+import com.jayanslow.utils.serializer.SerializerFactory;
 
 public class JsonController {
 	private static Charset			DEFAULT_CHARSET	= StandardCharsets.UTF_8;
