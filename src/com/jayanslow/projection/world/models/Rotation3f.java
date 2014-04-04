@@ -34,12 +34,12 @@ public class Rotation3f extends Tuple3f {
 		// m = Rz(angleZ)
 		m.rotZ(z);
 
-		// m = Rz(angleZ) . Ry(angleY)
-		m2.rotY(y);
+		// m = Rz(angleZ) . Ry(angleX)
+		m2.rotX(x);
 		m.mul(m2);
 
-		// m = Rz(angleZ) . Ry(angleY) . Rx(angleX)
-		m2.rotX(x);
+		// m = Rz(angleZ) . Ry(angleX) . Rx(angleY)
+		m2.rotY(y);
 		m.mul(m2);
 
 		return m;
