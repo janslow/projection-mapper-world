@@ -8,12 +8,10 @@ public class CuboidUniverse implements Universe {
 
 	private final Collection<RealObject>	children;
 	private final Vector3f					dimensions;
-	private RenderMode						renderMode;
 
-	public CuboidUniverse(final Vector3f dimensions, final Collection<RealObject> children, final RenderMode renderMode) {
+	public CuboidUniverse(final Vector3f dimensions, final Collection<RealObject> children) {
 		this.children = children;
 		this.dimensions = new Vector3f(dimensions);
-		this.renderMode = renderMode;
 	}
 
 	@Override
@@ -33,8 +31,6 @@ public class CuboidUniverse implements Universe {
 				return false;
 		} else if (!dimensions.equals(other.dimensions))
 			return false;
-		if (renderMode != other.renderMode)
-			return false;
 		return true;
 	}
 
@@ -49,27 +45,16 @@ public class CuboidUniverse implements Universe {
 	}
 
 	@Override
-	public RenderMode getRenderMode() {
-		return renderMode;
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 0;
 		result = prime * result + (children == null ? 0 : children.hashCode());
 		result = prime * result + (dimensions == null ? 0 : dimensions.hashCode());
-		result = prime * result + (renderMode == null ? 0 : renderMode.hashCode());
 		return result;
 	}
 
 	@Override
 	public void setDimensions(Vector3f dimensions) {
 		this.dimensions.set(dimensions);
-	}
-
-	@Override
-	public void setRenderMode(RenderMode mode) {
-		renderMode = mode;
 	}
 }
