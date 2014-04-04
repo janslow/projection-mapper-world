@@ -9,7 +9,7 @@ public interface Face {
 	 * 
 	 * @return Object direction and roll
 	 */
-	public Rotation3f getDirection();
+	public Rotation3f getRotation();
 
 	/**
 	 * Gets the id of the face, such that (parent, faceId) is unique

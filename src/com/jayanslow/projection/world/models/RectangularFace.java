@@ -52,7 +52,7 @@ public class RectangularFace implements Face {
 	}
 
 	@Override
-	public Rotation3f getDirection() {
+	public Rotation3f getRotation() {
 		return new Rotation3f(rotation);
 	}
 
