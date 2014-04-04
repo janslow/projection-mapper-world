@@ -18,7 +18,7 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 		this.dimensions = new Vector2f(dimensions);
 		this.screenId = screenId;
 
-		face = new RectangularFace(0, new Vector3f(), new Rotation3f(), this.dimensions);
+		face = new RectangularFace(0, new Vector3f(), new Rotation3f(), this.dimensions, this);
 	}
 
 	@Override

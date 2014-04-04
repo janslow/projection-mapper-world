@@ -5,13 +5,6 @@ import javax.vecmath.Vector3f;
 public interface Face {
 
 	/**
-	 * Gets the direction of the face
-	 * 
-	 * @return Object direction and roll
-	 */
-	public Rotation3f getRotation();
-
-	/**
 	 * Gets the id of the face, such that (parent, faceId) is unique
 	 * 
 	 * @return Face id
@@ -24,4 +17,18 @@ public interface Face {
 	 * @return
 	 */
 	public Vector3f getPosition();
+
+	/**
+	 * Gets the direction of the face
+	 * 
+	 * @return Object direction and roll
+	 */
+	public Rotation3f getRotation();
+
+	/**
+	 * Gets the screen which this face is part of
+	 * 
+	 * @return Parent Screen
+	 */
+	public Screen getScreen();
 }
