@@ -1,6 +1,6 @@
 package com.jayanslow.projection.world.json;
 
-import java.util.Collection;
+import java.util.List;
 
 import javax.vecmath.Vector3f;
 
@@ -25,7 +25,7 @@ public class UniverseSerializer extends AbstractSerializer<Universe> {
 	@Override
 	public Universe deserialize(JSONObject o) throws JSONException {
 		final JSONArray jsonChildren = o.getJSONArray(KEY_CHILDREN);
-		final Collection<RealObject> children = getFactory().deserialize(RealObject.class, jsonChildren);
+		final List<RealObject> children = getFactory().deserialize(RealObject.class, jsonChildren);
 
 		final Vector3f dimensions = getFactory().deserialize(Vector3f.class, o.getJSONObject(KEY_DIMENSIONS));
 

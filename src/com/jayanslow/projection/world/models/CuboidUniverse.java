@@ -1,17 +1,25 @@
 package com.jayanslow.projection.world.models;
 
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.vecmath.Vector3f;
 
 public class CuboidUniverse implements Universe {
 
-	private final Collection<RealObject>	children;
-	private final Vector3f					dimensions;
+	private final List<RealObject>	children;
+	private final Vector3f			dimensions;
 
-	public CuboidUniverse(final Vector3f dimensions, final Collection<RealObject> children) {
+	public CuboidUniverse(final Vector3f dimensions, final List<RealObject> children) {
 		this.children = children;
 		this.dimensions = new Vector3f(dimensions);
+	}
+
+	@Override
+	public void add(RealObject o) throws NullPointerException {
+		if (o != null)
+			throw new NullPointerException();
+		children.add(o);
 	}
 
 	@Override
@@ -35,8 +43,8 @@ public class CuboidUniverse implements Universe {
 	}
 
 	@Override
-	public Collection<RealObject> getChildren() {
-		return children;
+	public List<RealObject> getChildren() {
+		return new ArrayList<>(children);
 	}
 
 	@Override
@@ -51,6 +59,11 @@ public class CuboidUniverse implements Universe {
 		result = prime * result + (children == null ? 0 : children.hashCode());
 		result = prime * result + (dimensions == null ? 0 : dimensions.hashCode());
 		return result;
+	}
+
+	@Override
+	public boolean remove(RealObject o) {
+		return children.remove(o);
 	}
 
 	@Override
