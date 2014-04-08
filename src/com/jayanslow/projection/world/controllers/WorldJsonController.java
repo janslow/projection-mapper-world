@@ -24,16 +24,16 @@ import com.jayanslow.utils.serializer.MapSerializerFactory;
 import com.jayanslow.utils.serializer.Serializer;
 import com.jayanslow.utils.serializer.SerializerFactory;
 
-public class JsonController {
+public class WorldJsonController {
 	private static Charset			DEFAULT_CHARSET	= StandardCharsets.UTF_8;
 	private final SerializerFactory	f;
 	private final Charset			charset;
 
-	public JsonController() {
+	public WorldJsonController() {
 		this(DEFAULT_CHARSET);
 	}
 
-	public JsonController(Charset charset) {
+	public WorldJsonController(Charset charset) {
 		this.charset = charset;
 
 		f = new MapSerializerFactory(new HashMap<Class<?>, Serializer<?>>());
