@@ -55,4 +55,12 @@ public class Rotation3f extends Tuple3f {
 		Matrix3f m = getRotationMatrix();
 		m.transform(v);
 	}
+
+	public Rotation3f toDegrees() {
+		return new Rotation3f((float) Math.toDegrees(x), (float) Math.toDegrees(y), (float) Math.toDegrees(z));
+	}
+
+	public Rotation3f toRadians() {
+		return new Rotation3f((float) Math.toRadians(x), (float) Math.toRadians(y), (float) Math.toRadians(z));
+	}
 }
