@@ -1,5 +1,8 @@
 package com.jayanslow.projection.world.models;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.vecmath.Vector3f;
 
 import com.jayanslow.projection.world.listeners.AbstractWorldListenable;
@@ -7,10 +10,12 @@ import com.jayanslow.projection.world.listeners.RealObjectListener;
 
 public abstract class AbstractRealObject extends AbstractWorldListenable implements RealObject {
 
-	private final int				id;
-	private final Vector3f			position;
-	private final RealObjectType	type;
-	private final Rotation3f		rotation;
+	private final int						id;
+
+	private final Vector3f					position;
+	private final RealObjectType			type;
+	private final Rotation3f				rotation;
+	private final List<RealObjectListener>	realObjectListeners	= new LinkedList<RealObjectListener>();
 
 	public AbstractRealObject(final RealObjectType type, final int id, final Vector3f position, Rotation3f rotation) {
 		super();
@@ -18,6 +23,14 @@ public abstract class AbstractRealObject extends AbstractWorldListenable impleme
 		this.id = id;
 		this.position = new Vector3f(position);
 		this.rotation = new Rotation3f(rotation);
+	}
+
+	@Override
+	public void addRealObjectListener(RealObjectListener l) {
+		if (l == null)
+			throw new NullPointerException();
+		if (!realObjectListeners.contains(l))
+			realObjectListeners.add(l);
 	}
 
 	@Override
@@ -47,10 +60,14 @@ public abstract class AbstractRealObject extends AbstractWorldListenable impleme
 	}
 
 	private void fireRealObjectMove(Vector3f old) {
+		for (RealObjectListener l : realObjectListeners)
+			l.realObjectMove(this, old);
 		fireWorldChange();
 	}
 
 	private void fireRealObjectRotate(Rotation3f old) {
+		for (RealObjectListener l : realObjectListeners)
+			l.realObjectRotate(this, old);
 		fireWorldChange();
 	}
 

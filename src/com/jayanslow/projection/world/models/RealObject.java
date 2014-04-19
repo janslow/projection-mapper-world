@@ -7,6 +7,8 @@ import com.jayanslow.projection.world.listeners.WorldListenable;
 
 public interface RealObject extends WorldListenable {
 
+	public void addRealObjectListener(RealObjectListener l);
+
 	/**
 	 * Unique ID of object
 	 * 
