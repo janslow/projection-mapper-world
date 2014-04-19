@@ -4,7 +4,12 @@ import java.util.List;
 
 import javax.vecmath.Vector3f;
 
-public interface Universe {
+import com.jayanslow.projection.world.listeners.WorldListenable;
+import com.jayanslow.projection.world.listeners.WorldListener;
+
+public interface Universe extends WorldListenable {
+	float	MAX_DIMENSION	= 1E6f;
+
 	/**
 	 * Adds a real object to the collection of children
 	 * 

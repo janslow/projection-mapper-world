@@ -5,7 +5,10 @@ import java.util.List;
 
 import javax.vecmath.Vector3f;
 
-public class CuboidUniverse implements Universe {
+import com.jayanslow.projection.world.listeners.AbstractWorldListenable;
+import com.jayanslow.projection.world.listeners.WorldListenable;
+
+public class CuboidUniverse extends AbstractWorldListenable implements Universe {
 
 	private final List<RealObject>	children;
 	private final Vector3f			dimensions;

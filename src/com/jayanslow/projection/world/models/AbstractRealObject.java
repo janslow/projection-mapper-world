@@ -2,7 +2,10 @@ package com.jayanslow.projection.world.models;
 
 import javax.vecmath.Vector3f;
 
-public abstract class AbstractRealObject implements RealObject {
+import com.jayanslow.projection.world.listeners.AbstractWorldListenable;
+import com.jayanslow.projection.world.listeners.RealObjectListener;
+
+public abstract class AbstractRealObject extends AbstractWorldListenable implements RealObject {
 
 	private final int				id;
 	private final Vector3f			position;
@@ -43,6 +46,14 @@ public abstract class AbstractRealObject implements RealObject {
 		return true;
 	}
 
+	private void fireRealObjectMove(Vector3f old) {
+		fireWorldChange();
+	}
+
+	private void fireRealObjectRotate(Rotation3f old) {
+		fireWorldChange();
+	}
+
 	@Override
 	public int getId() {
 		return id;
@@ -78,14 +89,24 @@ public abstract class AbstractRealObject implements RealObject {
 	public void setPosition(Vector3f position) throws NullPointerException {
 		if (position == null)
 			throw new NullPointerException("position must not be null");
+
+		Vector3f old = new Vector3f(this.position);
+
 		this.position.set(position);
+
+		fireRealObjectMove(old);
 	}
 
 	@Override
 	public void setRotation(Rotation3f rotation) throws NullPointerException {
 		if (rotation == null)
 			throw new NullPointerException("FlatScreen.direction can not be null");
+
+		Rotation3f old = new Rotation3f(this.rotation);
+
 		this.rotation.set(rotation);
+
+		fireRealObjectRotate(old);
 	}
 
 }

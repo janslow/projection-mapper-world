@@ -12,6 +12,10 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 	private final Face		face;
 	private final int		screenId;
 
+	public FlatScreen(int id, int screenId) {
+		this(id, screenId, new Vector3f(), new Rotation3f(), new Vector2f());
+	}
+
 	public FlatScreen(final int id, final int screenId, final Vector3f position, final Rotation3f rotation,
 			final Vector2f dimensions) {
 		super(RealObjectType.SCREEN, id, position, rotation);
@@ -38,6 +42,10 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 		if (screenId != other.screenId)
 			return false;
 		return true;
+	}
+
+	private void fireScreenResize(Vector2f old) {
+		fireWorldChange();
 	}
 
 	/**
@@ -84,6 +92,11 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 	public void setDimensions(Vector2f dimensions) throws NullPointerException {
 		if (dimensions == null)
 			throw new NullPointerException("FlatScreen.dimensions can not be null");
+
+		Vector2f old = new Vector2f(this.dimensions);
+
 		this.dimensions.set(dimensions);
+
+		fireScreenResize(old);
 	}
 }
