@@ -32,9 +32,9 @@ public interface Projector extends RealObject {
 	public int getResolutionWidth();
 
 	/**
-	 * The ratio of image width to throw distance for the projector. width = throw * ratio
+	 * Gets the throw ratio for the projector. The ratio of throw:width.
 	 * 
-	 * @return Throw ratio of projector beam (1:x)
+	 * @return Throw ratio of projector beam (x:1)
 	 */
 	public float getThrowRatio();
 
@@ -61,10 +61,10 @@ public interface Projector extends RealObject {
 	public void setResolution(int height, int width) throws IllegalArgumentException;
 
 	/**
-	 * Sets the throw ratio of the projector lens
+	 * Sets the throw ratio of the projector lens. The ratio of throw:width.
 	 * 
 	 * @param throwRatio
-	 *            Throw ratio of projector beam (1:x) (positive real number)
+	 *            Throw ratio of projector beam (x:1) (positive real number)
 	 * @throws IllegalArgumentException
 	 *             Thrown if the throwRatio is <= 0
 	 */
