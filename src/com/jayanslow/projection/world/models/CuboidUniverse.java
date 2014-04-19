@@ -17,7 +17,7 @@ public class CuboidUniverse implements Universe {
 
 	@Override
 	public void add(RealObject o) throws NullPointerException {
-		if (o != null)
+		if (o == null)
 			throw new NullPointerException();
 		children.add(o);
 	}
