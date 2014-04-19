@@ -2,7 +2,11 @@ package com.jayanslow.projection.world.models;
 
 import javax.vecmath.Vector3f;
 
+import com.jayanslow.projection.world.listeners.ProjectorListener;
+
 public interface Projector extends RealObject {
+	public void addProjectorListener(ProjectorListener l);
+
 	/**
 	 * Gets the dimensions of the projector
 	 * 

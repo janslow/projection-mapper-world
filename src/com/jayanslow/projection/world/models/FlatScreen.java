@@ -2,15 +2,20 @@ package com.jayanslow.projection.world.models;
 
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 import javax.vecmath.Vector2f;
 import javax.vecmath.Vector3f;
 
+import com.jayanslow.projection.world.listeners.ScreenListener;
+
 public class FlatScreen extends AbstractRealObject implements Screen {
 
-	private final Vector2f	dimensions;
-	private final Face		face;
-	private final int		screenId;
+	private final Vector2f				dimensions;
+	private final Face					face;
+	private final int					screenId;
+	private final List<ScreenListener>	listeners	= new LinkedList<ScreenListener>();
 
 	public FlatScreen(int id, int screenId) {
 		this(id, screenId, new Vector3f(), new Rotation3f(), new Vector2f());
@@ -23,6 +28,12 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 		this.screenId = screenId;
 
 		face = new RectangularFace(0, new Vector3f(), new Rotation3f(), this.dimensions, this);
+	}
+
+	public void addScreenListener(ScreenListener l) {
+		if (l == null)
+			throw new NullPointerException();
+		listeners.add(l);
 	}
 
 	@Override
@@ -45,6 +56,8 @@ public class FlatScreen extends AbstractRealObject implements Screen {
 	}
 
 	private void fireScreenResize(Vector2f old) {
+		for (ScreenListener l : listeners)
+			l.screenChangeDimensions(this, old);
 		fireWorldChange();
 	}
 

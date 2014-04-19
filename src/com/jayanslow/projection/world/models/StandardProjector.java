@@ -1,14 +1,20 @@
 package com.jayanslow.projection.world.models;
 
+import java.util.LinkedList;
+import java.util.List;
+
 import javax.vecmath.Vector3f;
+
+import com.jayanslow.projection.world.listeners.ProjectorListener;
 
 public class StandardProjector extends AbstractRealObject implements Projector {
 
-	private int				height;
-	private final int		projectorId;
-	private float			throwRatio;
-	private int				width;
-	private final Vector3f	dimensions;
+	private int								height;
+	private final int						projectorId;
+	private float							throwRatio;
+	private int								width;
+	private final Vector3f					dimensions;
+	private final List<ProjectorListener>	listeners	= new LinkedList<>();
 
 	public StandardProjector(int id, int projectorId) {
 		this(id, projectorId, new Vector3f(), new Rotation3f(), new Vector3f(), 1, 1, 1);
@@ -22,6 +28,13 @@ public class StandardProjector extends AbstractRealObject implements Projector {
 		this.projectorId = projectorId;
 		this.throwRatio = throwRatio;
 		this.width = width;
+	}
+
+	@Override
+	public void addProjectorListener(ProjectorListener l) {
+		if (l == null)
+			throw new NullPointerException();
+		listeners.add(l);
 	}
 
 	@Override
@@ -45,14 +58,20 @@ public class StandardProjector extends AbstractRealObject implements Projector {
 	}
 
 	private void fireProjectorChangeResolution(int oldHeight, int oldWidth) {
+		for (ProjectorListener l : listeners)
+			l.projectorChangeResolution(this, oldHeight, oldWidth);
 		fireWorldChange();
 	}
 
 	private void fireProjectorResize(Vector3f old) {
+		for (ProjectorListener l : listeners)
+			l.projectorResize(this, old);
 		fireWorldChange();
 	}
 
 	private void fireProjectorThrowRatioChange(float old) {
+		for (ProjectorListener l : listeners)
+			l.projectorChangeThrowRatio(this, old);
 		fireWorldChange();
 	}
 
