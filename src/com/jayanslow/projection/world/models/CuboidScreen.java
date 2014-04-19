@@ -13,6 +13,10 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 	private final List<Face>	faces;
 	private final int			screenId;
 
+	public CuboidScreen(int id, int screenId) {
+		this(id, screenId, new Vector3f(), new Rotation3f(), new Vector3f());
+	}
+
 	public CuboidScreen(final int id, final int screenId, final Vector3f position, final Rotation3f rotation,
 			final Vector3f dimensions) {
 		super(RealObjectType.SCREEN, id, position, rotation);
@@ -98,6 +102,10 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 		result = prime * result + (faces == null ? 0 : faces.hashCode());
 		result = prime * result + screenId;
 		return result;
+	}
+
+	public void setDimensions(Vector3f dimensions) {
+		this.dimensions.set(dimensions);
 	}
 
 }
