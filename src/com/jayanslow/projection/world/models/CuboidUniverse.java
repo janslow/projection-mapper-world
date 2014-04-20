@@ -6,7 +6,6 @@ import java.util.List;
 import javax.vecmath.Vector3f;
 
 import com.jayanslow.projection.world.listeners.AbstractWorldListenable;
-import com.jayanslow.projection.world.listeners.WorldListenable;
 
 public class CuboidUniverse extends AbstractWorldListenable implements Universe {
 

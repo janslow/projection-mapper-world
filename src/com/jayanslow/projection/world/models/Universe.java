@@ -5,7 +5,6 @@ import java.util.List;
 import javax.vecmath.Vector3f;
 
 import com.jayanslow.projection.world.listeners.WorldListenable;
-import com.jayanslow.projection.world.listeners.WorldListener;
 
 public interface Universe extends WorldListenable {
 	float	MAX_DIMENSION	= 1E6f;
