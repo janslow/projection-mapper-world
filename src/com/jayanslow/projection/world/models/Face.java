@@ -12,6 +12,13 @@ public interface Face {
 	public int getFaceId();
 
 	/**
+	 * Friendly name of face
+	 * 
+	 * @return Friendly name, or null
+	 */
+	public String getName();
+
+	/**
 	 * Gets the position
 	 * 
 	 * @return

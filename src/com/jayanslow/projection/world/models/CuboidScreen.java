@@ -28,20 +28,20 @@ public class CuboidScreen extends AbstractRealObject implements Screen {
 		faces = new ArrayList<Face>(6);
 		// Front and Back
 		faces.add(new RectangularFace(0, new Vector3f(x, 0, 0), new Rotation3f(0, (float) Math.PI, 0), new Vector2f(x,
-				y), this));
-		faces.add(new RectangularFace(1, new Vector3f(0, 0, z), new Rotation3f(), new Vector2f(x, y), this));
+				y), this, "Front"));
+		faces.add(new RectangularFace(1, new Vector3f(0, 0, z), new Rotation3f(), new Vector2f(x, y), this, "Back"));
 
 		// Top and Bottom
 		faces.add(new RectangularFace(2, new Vector3f(x, y, 0),
-				new Rotation3f((float) Math.PI / -2, 0, (float) Math.PI), new Vector2f(x, z), this));
+				new Rotation3f((float) Math.PI / -2, 0, (float) Math.PI), new Vector2f(x, z), this, "Top"));
 		faces.add(new RectangularFace(3, new Vector3f(0, 0, 0), new Rotation3f((float) Math.PI / 2, 0, 0),
-				new Vector2f(x, z), this));
+				new Vector2f(x, z), this, "Bottom"));
 
 		// Left and Right
 		faces.add(new RectangularFace(4, new Vector3f(0, 0, 0), new Rotation3f(0, (float) -Math.PI / 2, 0),
-				new Vector2f(z, y), this));
+				new Vector2f(z, y), this, "Left"));
 		faces.add(new RectangularFace(5, new Vector3f(x, 0, z), new Rotation3f(0, (float) Math.PI / 2, 0),
-				new Vector2f(z, y), this));
+				new Vector2f(z, y), this, "Right"));
 	}
 
 	@Override
