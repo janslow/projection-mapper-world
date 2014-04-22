@@ -1,6 +1,5 @@
 package com.jayanslow.projection.world.models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.vecmath.Vector3f;
@@ -46,7 +45,7 @@ public class CuboidUniverse extends AbstractWorldListenable implements Universe 
 
 	@Override
 	public List<RealObject> getChildren() {
-		return new ArrayList<>(children);
+		return children;
 	}
 
 	@Override
